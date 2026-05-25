@@ -1,0 +1,49 @@
+<div class="pt-container animate-fade-in-up">
+  <div class="animate-bounce-in">
+    <div class="pt-icon-wrap">
+      <lucide-icon name="pencil" class="pt-icon"></lucide-icon>
+    </div>
+  </div>
+
+  <ng-container [ngSwitch]="phase">
+    <ng-container *ngSwitchCase="'mc_to_written'">
+      <h2 class="pt-title">🎯 Vòng 1 xong!</h2>
+      <p class="pt-subtitle">Trắc nghiệm định nghĩa: <span class="pt-highlight-amber">{{ words.length }} từ</span></p>
+      <p class="pt-instruction">Tiếp theo: <span class="pt-highlight-primary">tự luận định nghĩa</span></p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'written_to_synonym_mc'">
+      <h2 class="pt-title">✍️ Vòng 2 xong!</h2>
+      <p class="pt-subtitle">Tự luận định nghĩa: <span class="pt-highlight-amber">{{ words.length }} từ</span></p>
+      <p class="pt-instruction">Tiếp theo: <span class="pt-highlight-primary">trắc nghiệm synonym</span> (chọn đáp án đúng)</p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'synonym_mc_to_synonym_written'">
+      <h2 class="pt-title">🔗 Vòng 3 xong!</h2>
+      <p class="pt-subtitle">Trắc nghiệm synonym: <span class="pt-highlight-amber">{{ words.length }} từ</span></p>
+      <p class="pt-instruction">Tiếp theo: <span class="pt-highlight-primary">tự luận synonym</span> (gõ synonym)</p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'synonym_written_to_vocab'">
+      <h2 class="pt-title">📝 Vòng 4 xong!</h2>
+      <p class="pt-subtitle">Tự luận synonym: <span class="pt-highlight-amber">{{ words.length }} từ</span></p>
+      <p class="pt-instruction">Cuối cụm: <span class="pt-highlight-primary">nhập từ gốc</span> khi thấy định nghĩa</p>
+    </ng-container>
+  </ng-container>
+
+  <div class="pt-preview-section">
+    <div class="pt-grid">
+      <div *ngFor="let w of words" class="pt-card">
+        <lucide-icon name="check-circle-2" class="pt-card-icon"></lucide-icon>
+        <span class="pt-card-term">{{ w.term }}</span>
+        <span *ngIf="w.synonym" class="pt-card-synonym">≈ {{ w.synonym }}</span>
+      </div>
+    </div>
+  </div>
+
+  <button
+    (click)="continueRound.emit()"
+    class="btn-primary pt-btn-start"
+    id="btn-continue-next-round"
+  >
+    <lucide-icon name="arrow-right" class="pt-btn-icon"></lucide-icon>
+    {{ continueLabel }}
+  </button>
+</div>

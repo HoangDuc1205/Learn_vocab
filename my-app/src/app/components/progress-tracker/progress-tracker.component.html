@@ -1,0 +1,48 @@
+<div>
+  <div class="progress-bar-track">
+    <div
+      class="progress-bar-fill mastered"
+      [style.width.%]="masteredPct"
+    ></div>
+    <div
+      class="progress-bar-fill in-progress"
+      [style.width.%]="inProgressPct"
+    ></div>
+    <div
+      class="progress-bar-fill learning"
+      [style.width.%]="notLearnedPct"
+    ></div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card success">
+      <div class="stat-icon success">
+        <lucide-icon name="trophy" [size]="18"></lucide-icon>
+      </div>
+      <div>
+        <p class="stat-value success">{{ mastered }}</p>
+        <p class="stat-label">Mastered</p>
+      </div>
+    </div>
+
+    <div class="stat-card amber">
+      <div class="stat-icon amber">
+        <lucide-icon name="star" [size]="18"></lucide-icon>
+      </div>
+      <div>
+        <p class="stat-value amber">{{ inProgress }}</p>
+        <p class="stat-label">Đang học</p>
+      </div>
+    </div>
+
+    <div class="stat-card primary">
+      <div class="stat-icon primary">
+        <lucide-icon name="book-open" [size]="18"></lucide-icon>
+      </div>
+      <div>
+        <p class="stat-value primary">{{ notLearned }}</p>
+        <p class="stat-label">Chưa học</p>
+      </div>
+    </div>
+  </div>
+</div>

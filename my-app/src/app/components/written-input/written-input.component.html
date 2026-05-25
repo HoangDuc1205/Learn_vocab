@@ -1,0 +1,78 @@
+<div class="animate-fade-in-up">
+  <!-- Badge -->
+  <div>
+    <span class="wi-badge">
+      {{ badgeLabel }}
+    </span>
+  </div>
+
+  <!-- Question -->
+  <h2 class="wi-question">
+    {{ question }}
+  </h2>
+
+  <!-- Input Form -->
+  <form (submit)="handleSubmit($event)">
+    <div class="wi-input-wrap">
+      <input
+        #answerInput
+        type="text"
+        [(ngModel)]="inputVal"
+        name="answerVal"
+        [disabled]="showResult"
+        [class.correct]="showResult && isCorrect"
+        [class.incorrect]="showResult && !isCorrect"
+        class="learn-input"
+        [placeholder]="placeholder"
+        autoComplete="off"
+        id="written-answer-input"
+      />
+      <button
+        *ngIf="!showResult && inputVal.trim()"
+        type="submit"
+        class="wi-submit-btn"
+        id="btn-submit-answer"
+      >
+        <lucide-icon name="corner-down-left" [size]="16"></lucide-icon>
+      </button>
+    </div>
+  </form>
+
+  <!-- Don't Know -->
+  <button
+    *ngIf="!showResult"
+    (click)="handleDontKnow()"
+    class="btn-dont-know"
+    id="btn-dont-know-written"
+  >
+    <lucide-icon name="help-circle" [size]="16"></lucide-icon>
+    Don't know?
+  </button>
+
+  <!-- Feedback -->
+  <div
+    *ngIf="showResult"
+    class="wi-feedback animate-fade-in-scale"
+    [ngClass]="isCorrect ? 'correct' : 'incorrect'"
+  >
+    <ng-container *ngIf="isCorrect; else wrongTpl">
+      <p class="feedback-text-success">✨ Perfect! Keep it up!</p>
+    </ng-container>
+    <ng-template #wrongTpl>
+      <div>
+        <p class="feedback-text-error">
+          {{ inputVal.trim() ? '❌ Not quite.' : '📖 Here\'s the answer:' }}
+        </p>
+        <p *ngIf="inputVal.trim()" class="feedback-your-answer">
+          Your answer: <span class="feedback-your-answer-wrong">{{ inputVal }}</span>
+        </p>
+        <p class="feedback-correct-answer">
+          Correct answer: <span class="feedback-highlight">{{ correctAnswer }}</span>
+        </p>
+        <p *ngIf="alternateAnswers.length" class="feedback-alt-answers">
+          Also accepted: <span class="feedback-highlight">{{ alternateAnswers.join(', ') }}</span>
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="completion-center animate-fade-in-up">
+  <!-- Confetti particle container -->
+  <ng-container *ngIf="allDone">
+    <div
+      *ngFor="let p of particles"
+      class="confetti-particle"
+      [style.left.%]="p.left"
+      style="top: -10px;"
+      [style.width]="p.size"
+      [style.height]="p.size"
+      [style.backgroundColor]="p.color"
+      [style.animationDelay]="p.delay"
+      [style.animationDuration]="p.duration"
+      [style.borderRadius]="p.borderRadius"
+    ></div>
+  </ng-container>
+
+  <!-- Icon -->
+  <div class="animate-bounce-in">
+    <div
+      class="completion-icon-wrap"
+      [ngClass]="{'gold': allDone}"
+    >
+      <lucide-icon
+        *ngIf="allDone; else sparkTpl"
+        name="trophy"
+        [size]="48"
+      ></lucide-icon>
+      <ng-template #sparkTpl>
+        <lucide-icon name="sparkles" [size]="48"></lucide-icon>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h2 class="completion-title">
+    {{ allDone ? '🎉 Congratulations!' : 'Session Complete!' }}
+  </h2>
+  <p class="completion-subtitle">
+    <ng-container *ngIf="allDone; else progressTpl">
+      You've mastered all the vocabulary!
+    </ng-container>
+    <ng-template #progressTpl>
+      <ng-container *ngIf="testNumber; else genericProgress">
+        Test {{ testNumber }} — {{ mastered }} / {{ total }} từ đã mastered.
+      </ng-container>
+      <ng-template #genericProgress>
+        Great progress! {{ mastered }} of {{ total }} words mastered.
+      </ng-template>
+    </ng-template>
+  </p>
+
+  <!-- Stats -->
+  <div class="completion-stats">
+    <div class="completion-stat-card success">
+      <div class="stat-card-icon success">
+        <lucide-icon name="trophy" [size]="16"></lucide-icon>
+      </div>
+      <p class="stat-card-value success animate-count-up">{{ mastered }}</p>
+      <p class="stat-card-label">Mastered</p>
+    </div>
+    <div class="completion-stat-card amber">
+      <div class="stat-card-icon amber">
+        <lucide-icon name="star" [size]="16"></lucide-icon>
+      </div>
+      <p class="stat-card-value amber animate-count-up" style="animation-delay: 0.1s;">{{ familiar }}</p>
+      <p class="stat-card-label">Familiar</p>
+    </div>
+    <div class="completion-stat-card primary">
+      <div class="stat-card-icon primary">
+        <lucide-icon name="book-open" [size]="16"></lucide-icon>
+      </div>
+      <p class="stat-card-value primary animate-count-up" style="animation-delay: 0.2s;">{{ notLearned }}</p>
+      <p class="stat-card-label">Learning</p>
+    </div>
+  </div>
+
+  <!-- Progress Circle -->
+  <div class="progress-circle-wrap">
+    <div class="progress-circle-container">
+      <svg class="progress-circle-svg" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="8" class="progress-circle-bg" />
+        <circle
+          cx="50" cy="50" r="42" fill="none" stroke-width="8"
+          stroke="url(#progressGradient)"
+          stroke-linecap="round"
+          [style.strokeDasharray]="(pct * 2.64) + ' ' + (264 - pct * 2.64)"
+          class="progress-circle-fill"
+        />
+        <defs>
+          <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6366f1" />
+            <stop offset="100%" stop-color="#22c55e" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="progress-circle-text">
+        <span class="progress-circle-pct">{{ pct }}%</span>
+        <span class="progress-circle-label">Complete</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="completion-actions">
+    <button
+      *ngIf="!allDone"
+      (click)="handleContinue()"
+      class="btn-primary"
+      id="btn-continue"
+    >
+      <lucide-icon name="arrow-right" [size]="18"></lucide-icon>
+      Continue Learning
+    </button>
+    <button
+      (click)="handleRestart()"
+      class="btn-ghost"
+      id="btn-restart"
+    >
+      <lucide-icon name="rotate-ccw" [size]="16"></lucide-icon>
+      Start Over
+    </button>
+  </div>
+</div>

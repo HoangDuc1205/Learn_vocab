@@ -1,0 +1,193 @@
+/* ============================================
+   PHASE TRANSITION COMPONENT — Teal Minimal
+   ============================================ */
+
+:host {
+  display: block;
+}
+
+.pt-container {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+/* === ICON WRAP === */
+.pt-icon-wrap {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0 auto 1.75rem auto;
+  border-radius: var(--radius-xl);
+  background: var(--amber-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Subtle ring thay shadow */
+  outline: 6px solid var(--amber-100);
+}
+
+body.dark .pt-icon-wrap { outline-color: rgba(245, 166, 35, 0.2); }
+
+.pt-icon {
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* === TITLE & SUBTITLES === */
+.pt-title {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: var(--surface-900);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+:host-context(.dark) .pt-title,
+body.dark .pt-title { color: var(--surface-50); }
+
+.pt-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--surface-500);
+  margin-bottom: 0.4rem;
+}
+
+:host-context(.dark) .pt-subtitle,
+body.dark .pt-subtitle { color: var(--surface-400); }
+
+.pt-instruction {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: var(--surface-400);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+:host-context(.dark) .pt-instruction,
+body.dark .pt-instruction { color: var(--surface-500); }
+
+.pt-highlight-amber {
+  font-weight: 600;
+  color: var(--amber-600);
+}
+
+body.dark .pt-highlight-amber { color: var(--amber-400); }
+
+.pt-highlight-primary {
+  font-weight: 500;
+  color: var(--primary-500);
+}
+
+body.dark .pt-highlight-primary { color: var(--primary-300); }
+
+/* === PREVIEW SECTION === */
+.pt-preview-section {
+  margin-bottom: 2rem;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.pt-preview-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--surface-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.pt-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  max-height: 13rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .pt-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.pt-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-50);
+  border: 1.5px solid var(--surface-100);
+  transition: border-color 0.18s ease;
+}
+
+:host-context(.dark) .pt-card,
+body.dark .pt-card {
+  background: var(--surface-800);
+  border-color: var(--surface-700);
+}
+
+.pt-card:hover {
+  border-color: var(--primary-200);
+}
+
+.pt-card-icon {
+  color: var(--primary-400);
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.pt-card-term {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--surface-800);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:host-context(.dark) .pt-card-term,
+body.dark .pt-card-term { color: var(--surface-200); }
+
+.pt-card-synonym {
+  font-size: 0.75rem;
+  color: var(--primary-500);
+  font-weight: 400;
+}
+
+body.dark .pt-card-synonym { color: var(--primary-300); }
+
+/* === CTA BUTTON === */
+.pt-btn-start {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem !important;
+  font-weight: 500 !important;
+  padding: 0.875rem 2rem !important;
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: background 0.18s ease, transform 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.pt-btn-start:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.pt-btn-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}

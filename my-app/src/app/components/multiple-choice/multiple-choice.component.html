@@ -1,0 +1,61 @@
+<div class="animate-fade-in-up">
+  <!-- Badge -->
+  <div>
+    <span class="mc-badge">
+      {{ badgeLabel }}
+    </span>
+  </div>
+
+  <!-- Question -->
+  <h2 class="mc-question">
+    {{ question }}
+  </h2>
+
+  <!-- Choices -->
+  <div class="mc-choices">
+    <button
+      *ngFor="let choice of choices; let idx = index"
+      (click)="handleSelect(choice)"
+      [disabled]="showResult"
+      [class]="getButtonClass(choice)"
+      [id]="'choice-' + idx"
+    >
+      <span class="choice-label">
+        {{ labels[idx] }}
+      </span>
+      {{ choice }}
+    </button>
+  </div>
+
+  <!-- Don't Know button -->
+  <button
+    *ngIf="!showResult"
+    (click)="handleDontKnow()"
+    class="btn-dont-know"
+    id="btn-dont-know"
+  >
+    <lucide-icon name="help-circle" [size]="16"></lucide-icon>
+    Don't know?
+  </button>
+
+  <!-- Feedback -->
+  <div
+    *ngIf="showResult"
+    class="mc-feedback animate-fade-in-scale"
+    [ngClass]="selected !== '__dont_know__' && selected === correctAnswer ? 'correct' : 'incorrect'"
+  >
+    <ng-container *ngIf="selected !== '__dont_know__' && selected === correctAnswer; else wrongTpl">
+      <p class="feedback-text-success">✨ Excellent! You got it right!</p>
+    </ng-container>
+    <ng-template #wrongTpl>
+      <div>
+        <p class="feedback-text-error">
+          {{ selected === '__dont_know__' ? '📖 Here\'s the answer:' : '❌ Not quite right.' }}
+        </p>
+        <p class="feedback-answer">
+          The correct answer is: <span class="feedback-answer-highlight">{{ correctAnswer }}</span>
+        </p>
+      </div>
+    </ng-template>
+  </div>
+</div>

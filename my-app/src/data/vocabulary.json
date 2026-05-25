@@ -1,0 +1,2002 @@
+[
+  {
+    "term": "nocturnal",
+    "definition": "hoạt động về đêm",
+    "synonym": "night-active"
+  },
+  {
+    "term": "critically",
+    "definition": "cực kỳ nghiêm trọng",
+    "synonym": "severely"
+  },
+  {
+    "term": "endangered",
+    "definition": "bị đe dọa tuyệt chủng",
+    "synonym": "threatened"
+  },
+  {
+    "term": "unique",
+    "definition": "độc đáo",
+    "synonym": "distinctive"
+  },
+  {
+    "term": "pale",
+    "definition": "nhạt màu",
+    "synonym": "light"
+  },
+  {
+    "term": "forest-dwelling",
+    "definition": "sống trong rừng",
+    "synonym": "forest-living"
+  },
+  {
+    "term": "owl-like",
+    "definition": "giống cú",
+    "synonym": "owlish"
+  },
+  {
+    "term": "feather",
+    "definition": "lông vũ",
+    "synonym": "plume"
+  },
+  {
+    "term": "forward-facing",
+    "definition": "hướng về phía trước",
+    "synonym": "front-facing"
+  },
+  {
+    "term": "predominantly",
+    "definition": "chủ yếu",
+    "synonym": "mainly"
+  },
+  {
+    "term": "beak",
+    "definition": "mỏ chim",
+    "synonym": "bill"
+  },
+  {
+    "term": "relatively",
+    "definition": "tương đối",
+    "synonym": "comparatively"
+  },
+  {
+    "term": "lifespan",
+    "definition": "tuổi thọ",
+    "synonym": "lifetime"
+  },
+  {
+    "term": "solitary",
+    "definition": "sống đơn độc",
+    "synonym": "alone"
+  },
+  {
+    "term": "occupy",
+    "definition": "sinh sống",
+    "synonym": "inhabit"
+  },
+  {
+    "term": "home range",
+    "definition": "phạm vi sống",
+    "synonym": "territory"
+  },
+  {
+    "term": "forage",
+    "definition": "kiếm ăn",
+    "synonym": "search"
+  },
+  {
+    "term": "leap",
+    "definition": "nhảy vọt",
+    "synonym": "jump"
+  },
+  {
+    "term": "flap",
+    "definition": "vỗ cánh",
+    "synonym": "flutter"
+  },
+  {
+    "term": "descent",
+    "definition": "sự hạ xuống",
+    "synonym": "fall"
+  },
+  {
+    "term": "vegetarian",
+    "definition": "ăn thực vật",
+    "synonym": "herbivorous"
+  },
+  {
+    "term": "bark",
+    "definition": "vỏ cây",
+    "synonym": "rind"
+  },
+  {
+    "term": "bulb",
+    "definition": "củ cây",
+    "synonym": "tuber"
+  },
+  {
+    "term": "fern frond",
+    "definition": "lá dương xỉ",
+    "synonym": "fern leaf"
+  },
+  {
+    "term": "breed",
+    "definition": "sinh sản",
+    "synonym": "reproduce"
+  },
+  {
+    "term": "plentiful",
+    "definition": "dồi dào",
+    "synonym": "abundant"
+  },
+  {
+    "term": "incubation",
+    "definition": "quá trình ấp trứng",
+    "synonym": "brooding"
+  },
+  {
+    "term": "chick-rearing",
+    "definition": "nuôi chim non",
+    "synonym": "chick-raising"
+  },
+  {
+    "term": "chick",
+    "definition": "chim non",
+    "synonym": "nestling"
+  },
+  {
+    "term": "nest",
+    "definition": "tổ",
+    "synonym": "roost"
+  },
+  {
+    "term": "incubate",
+    "definition": "ấp trứng",
+    "synonym": "brood"
+  },
+  {
+    "term": "unattended",
+    "definition": "không được trông coi",
+    "synonym": "unguarded"
+  },
+  {
+    "term": "vulnerable",
+    "definition": "dễ bị tổn thương",
+    "synonym": "susceptible"
+  },
+  {
+    "term": "predator",
+    "definition": "động vật săn mồi",
+    "synonym": "hunter"
+  },
+  {
+    "term": "arrival",
+    "definition": "sự xuất hiện",
+    "synonym": "coming"
+  },
+  {
+    "term": "settler",
+    "definition": "người định cư",
+    "synonym": "colonist"
+  },
+  {
+    "term": "prey",
+    "definition": "con mồi",
+    "synonym": "quarry"
+  },
+  {
+    "term": "cloak",
+    "definition": "áo choàng",
+    "synonym": "cape"
+  },
+  {
+    "term": "coloniser",
+    "definition": "người khai hoang",
+    "synonym": "settler"
+  },
+  {
+    "term": "be confined to",
+    "definition": "bị giới hạn ở",
+    "synonym": "be restricted to"
+  },
+  {
+    "term": "accelerate",
+    "definition": "đẩy nhanh",
+    "synonym": "quicken"
+  },
+  {
+    "term": "colonisation",
+    "definition": "sự thuộc địa hóa",
+    "synonym": "settlement"
+  },
+  {
+    "term": "habitat",
+    "definition": "môi trường sống",
+    "synonym": "environment"
+  },
+  {
+    "term": "deplete",
+    "definition": "làm suy giảm",
+    "synonym": "reduce"
+  },
+  {
+    "term": "stoat",
+    "definition": "chồn ecmin",
+    "synonym": "ermine"
+  },
+  {
+    "term": "launch",
+    "definition": "khởi động",
+    "synonym": "start"
+  },
+  {
+    "term": "conservationist",
+    "definition": "nhà bảo tồn",
+    "synonym": "environmentalist"
+  },
+  {
+    "term": "relocate",
+    "definition": "di dời",
+    "synonym": "move"
+  },
+  {
+    "term": "predator-free",
+    "definition": "không có thú săn mồi",
+    "synonym": "safe"
+  },
+  {
+    "term": "practically",
+    "definition": "gần như",
+    "synonym": "almost"
+  },
+  {
+    "term": "cling to life",
+    "definition": "cố gắng sống sót",
+    "synonym": "survive"
+  },
+  {
+    "term": "isolated",
+    "definition": "biệt lập",
+    "synonym": "remote"
+  },
+  {
+    "term": "expedition",
+    "definition": "chuyến thám hiểm",
+    "synonym": "journey"
+  },
+  {
+    "term": "captivity",
+    "definition": "nuôi nhốt",
+    "synonym": "confinement"
+  },
+  {
+    "term": "initiative",
+    "definition": "sáng kiến",
+    "synonym": "project"
+  },
+  {
+    "term": "spot",
+    "definition": "phát hiện",
+    "synonym": "notice"
+  },
+  {
+    "term": "ferret",
+    "definition": "chồn sương",
+    "synonym": "polecat"
+  },
+  {
+    "term": "weasel",
+    "definition": "chồn",
+    "synonym": "mustelid"
+  },
+  {
+    "term": "subsequent",
+    "definition": "tiếp theo",
+    "synonym": "later"
+  },
+  {
+    "term": "predation",
+    "definition": "sự săn mồi",
+    "synonym": "hunting"
+  },
+  {
+    "term": "feral",
+    "definition": "hoang dã",
+    "synonym": "wild"
+  },
+  {
+    "term": "rapid",
+    "definition": "nhanh chóng",
+    "synonym": "fast"
+  },
+  {
+    "term": "evacuate",
+    "definition": "sơ tán",
+    "synonym": "remove"
+  },
+  {
+    "term": "sanctuary",
+    "definition": "khu bảo tồn",
+    "synonym": "refuge"
+  },
+  {
+    "term": "breeding",
+    "definition": "sự sinh sản",
+    "synonym": "reproduction"
+  },
+  {
+    "term": "insufficient",
+    "definition": "không đủ",
+    "synonym": "inadequate"
+  },
+  {
+    "term": "offset",
+    "definition": "bù đắp",
+    "synonym": "compensate"
+  },
+  {
+    "term": "mortality",
+    "definition": "tỷ lệ tử vong",
+    "synonym": "death rate"
+  },
+  {
+    "term": "prompt",
+    "definition": "thúc đẩy",
+    "synonym": "trigger"
+  },
+  {
+    "term": "specialist",
+    "definition": "chuyên gia",
+    "synonym": "expert"
+  },
+  {
+    "term": "renew",
+    "definition": "phục hồi",
+    "synonym": "restore"
+  },
+  {
+    "term": "eradicate",
+    "definition": "xóa bỏ",
+    "synonym": "eliminate"
+  },
+  {
+    "term": "intensively",
+    "definition": "chuyên sâu",
+    "synonym": "thoroughly"
+  },
+  {
+    "term": "supplementary",
+    "definition": "bổ sung",
+    "synonym": "additional"
+  },
+  {
+    "term": "hand-raising",
+    "definition": "nuôi bằng tay",
+    "synonym": "hand-rearing"
+  },
+  {
+    "term": "failing",
+    "definition": "yếu đi",
+    "synonym": "declining"
+  },
+  {
+    "term": "on target",
+    "definition": "đúng tiến độ",
+    "synonym": "on track"
+  },
+  {
+    "term": "cautious",
+    "definition": "thận trọng",
+    "synonym": "careful"
+  },
+  {
+    "term": "optimism",
+    "definition": "sự lạc quan",
+    "synonym": "hopefulness"
+  },
+  {
+    "term": "record",
+    "definition": "ghi chép",
+    "synonym": "document"
+  },
+  {
+    "term": "management",
+    "definition": "sự quản lý",
+    "synonym": "administration"
+  },
+  {
+    "term": "minimise",
+    "definition": "giảm thiểu",
+    "synonym": "reduce"
+  },
+  {
+    "term": "maintain",
+    "definition": "duy trì",
+    "synonym": "sustain"
+  },
+  {
+    "term": "sufficient",
+    "definition": "đủ",
+    "synonym": "enough"
+  },
+  {
+    "term": "accommodate",
+    "definition": "chứa được",
+    "synonym": "house"
+  },
+  {
+    "term": "stakeholder",
+    "definition": "bên liên quan",
+    "synonym": "participant"
+  },
+  {
+    "term": "reintroduce",
+    "definition": "tái thả",
+    "synonym": "restore"
+  },
+  {
+    "term": "elm",
+    "definition": "cây du",
+    "synonym": "elm tree"
+  },
+  {
+    "term": "account for",
+    "definition": "chiếm",
+    "synonym": "represent"
+  },
+  {
+    "term": "in the aftermath of",
+    "definition": "sau hậu quả của",
+    "synonym": "following"
+  },
+  {
+    "term": "dominant",
+    "definition": "chiếm ưu thế",
+    "synonym": "prevailing"
+  },
+  {
+    "term": "countryside",
+    "definition": "nông thôn",
+    "synonym": "rural area"
+  },
+  {
+    "term": "start from a very low base",
+    "definition": "bắt đầu từ mức rất thấp",
+    "synonym": "start small"
+  },
+  {
+    "term": "impact",
+    "definition": "tác động",
+    "synonym": "effect"
+  },
+  {
+    "term": "significant",
+    "definition": "đáng kể",
+    "synonym": "important"
+  },
+  {
+    "term": "fungus",
+    "definition": "nấm",
+    "synonym": "mold"
+  },
+  {
+    "term": "block",
+    "definition": "chặn",
+    "synonym": "obstruct"
+  },
+  {
+    "term": "vascular",
+    "definition": "thuộc mạch dẫn",
+    "synonym": "veined"
+  },
+  {
+    "term": "wilt",
+    "definition": "héo",
+    "synonym": "droop"
+  },
+  {
+    "term": "epidemic",
+    "definition": "dịch bệnh",
+    "synonym": "outbreak"
+  },
+  {
+    "term": "trigger",
+    "definition": "kích hoạt",
+    "synonym": "cause"
+  },
+  {
+    "term": "to be destined for",
+    "definition": "được định sẵn cho",
+    "synonym": "bound for"
+  },
+  {
+    "term": "intact",
+    "definition": "nguyên vẹn",
+    "synonym": "whole"
+  },
+  {
+    "term": "beetle",
+    "definition": "bọ cánh cứng",
+    "synonym": "insect"
+  },
+  {
+    "term": "virulent",
+    "definition": "cực kỳ nguy hiểm",
+    "synonym": "harmful"
+  },
+  {
+    "term": "hedgerow",
+    "definition": "hàng rào cây bụi",
+    "synonym": "hedge"
+  },
+  {
+    "term": "target",
+    "definition": "nhắm vào",
+    "synonym": "aim at"
+  },
+  {
+    "term": "reach",
+    "definition": "đạt tới",
+    "synonym": "attain"
+  },
+  {
+    "term": "diameter",
+    "definition": "đường kính",
+    "synonym": "width"
+  },
+  {
+    "term": "trunk",
+    "definition": "thân cây",
+    "synonym": "stem"
+  },
+  {
+    "term": "take hold",
+    "definition": "bắt đầu có tác động",
+    "synonym": "take effect"
+  },
+  {
+    "term": "mature",
+    "definition": "trưởng thành",
+    "synonym": "adult"
+  },
+  {
+    "term": "identify",
+    "definition": "xác định",
+    "synonym": "determine"
+  },
+  {
+    "term": "specimen",
+    "definition": "mẫu vật",
+    "synonym": "sample"
+  },
+  {
+    "term": "county",
+    "definition": "quận/hạt",
+    "synonym": "district"
+  },
+  {
+    "term": "mysteriously",
+    "definition": "một cách bí ẩn",
+    "synonym": "strangely"
+  },
+  {
+    "term": "survive",
+    "definition": "sống sót",
+    "synonym": "endure"
+  },
+  {
+    "term": "succumb",
+    "definition": "không chống chịu nổi",
+    "synonym": "yield"
+  },
+  {
+    "term": "limited",
+    "definition": "có hạn",
+    "synonym": "restricted"
+  },
+  {
+    "term": "tolerance",
+    "definition": "khả năng chịu đựng",
+    "synonym": "endurance"
+  },
+  {
+    "term": "resistance",
+    "definition": "sức đề kháng",
+    "synonym": "resilience"
+  },
+  {
+    "term": "down to luck",
+    "definition": "phụ thuộc vào may mắn",
+    "synonym": "chance-based"
+  },
+  {
+    "term": "run a close second to",
+    "definition": "xếp ngay sau",
+    "synonym": "trail closely"
+  },
+  {
+    "term": "prominent",
+    "definition": "nổi bật",
+    "synonym": "noticeable"
+  },
+  {
+    "term": "component",
+    "definition": "thành phần",
+    "synonym": "element"
+  },
+  {
+    "term": "ingrained",
+    "definition": "ăn sâu",
+    "synonym": "rooted"
+  },
+  {
+    "term": "unsurprising",
+    "definition": "không đáng ngạc nhiên",
+    "synonym": "expected"
+  },
+  {
+    "term": "advocate",
+    "definition": "người ủng hộ",
+    "synonym": "supporter"
+  },
+  {
+    "term": "unfold",
+    "definition": "diễn ra",
+    "synonym": "develop"
+  },
+  {
+    "term": "contribute to",
+    "definition": "góp phần vào",
+    "synonym": "help"
+  },
+  {
+    "term": "determined",
+    "definition": "kiên quyết",
+    "synonym": "resolute"
+  },
+  {
+    "term": "precarious",
+    "definition": "bấp bênh",
+    "synonym": "risky"
+  },
+  {
+    "term": "march in",
+    "definition": "tiến vào",
+    "synonym": "invade"
+  },
+  {
+    "term": "right on our doorstep",
+    "definition": "ở ngay gần",
+    "synonym": "nearby"
+  },
+  {
+    "term": "prospect",
+    "definition": "khả năng",
+    "synonym": "possibility"
+  },
+  {
+    "term": "rely on",
+    "definition": "dựa vào",
+    "synonym": "depend on"
+  },
+  {
+    "term": "resistant",
+    "definition": "có sức chống chịu",
+    "synonym": "hardy"
+  },
+  {
+    "term": "tolerant",
+    "definition": "chịu được",
+    "synonym": "resistant"
+  },
+  {
+    "term": "hybrid",
+    "definition": "lai",
+    "synonym": "crossbred"
+  },
+  {
+    "term": "strain",
+    "definition": "chủng",
+    "synonym": "variant"
+  },
+  {
+    "term": "seedling",
+    "definition": "cây con",
+    "synonym": "sapling"
+  },
+  {
+    "term": "withstand",
+    "definition": "chống chịu",
+    "synonym": "endure"
+  },
+  {
+    "term": "slit",
+    "definition": "vết rạch",
+    "synonym": "cut"
+  },
+  {
+    "term": "inject",
+    "definition": "tiêm vào",
+    "synonym": "insert"
+  },
+  {
+    "term": "pathogen",
+    "definition": "mầm bệnh",
+    "synonym": "germ"
+  },
+  {
+    "term": "susceptible",
+    "definition": "dễ bị ảnh hưởng",
+    "synonym": "vulnerable"
+  },
+  {
+    "term": "acceptance",
+    "definition": "sự chấp nhận",
+    "synonym": "approval"
+  },
+  {
+    "term": "acknowledge",
+    "definition": "thừa nhận",
+    "synonym": "admit"
+  },
+  {
+    "term": "element",
+    "definition": "yếu tố",
+    "synonym": "component"
+  },
+  {
+    "term": "bother",
+    "definition": "làm phiền",
+    "synonym": "concern"
+  },
+  {
+    "term": "host",
+    "definition": "là nơi sống cho",
+    "synonym": "support"
+  },
+  {
+    "term": "wary",
+    "definition": "cảnh giác",
+    "synonym": "cautious"
+  },
+  {
+    "term": "on the face of",
+    "definition": "thoạt nhìn",
+    "synonym": "seemingly"
+  },
+  {
+    "term": "replace",
+    "definition": "thay thế",
+    "synonym": "substitute"
+  },
+  {
+    "term": "horticultural",
+    "definition": "thuộc nghề làm vườn",
+    "synonym": "gardening"
+  },
+  {
+    "term": "analogue",
+    "definition": "vật tương tự",
+    "synonym": "equivalent"
+  },
+  {
+    "term": "clone",
+    "definition": "nhân bản",
+    "synonym": "copy"
+  },
+  {
+    "term": "emphasis",
+    "definition": "sự nhấn mạnh",
+    "synonym": "stress"
+  },
+  {
+    "term": "recover",
+    "definition": "phục hồi",
+    "synonym": "restore"
+  },
+  {
+    "term": "stressed",
+    "definition": "căng thẳng",
+    "synonym": "tense"
+  },
+  {
+    "term": "anxious",
+    "definition": "lo lắng",
+    "synonym": "worried"
+  },
+  {
+    "term": "weigh up",
+    "definition": "cân nhắc",
+    "synonym": "evaluate"
+  },
+  {
+    "term": "stressful",
+    "definition": "gây căng thẳng",
+    "synonym": "demanding"
+  },
+  {
+    "term": "circumstance",
+    "definition": "hoàn cảnh",
+    "synonym": "situation"
+  },
+  {
+    "term": "colleague",
+    "definition": "đồng nghiệp",
+    "synonym": "coworker"
+  },
+  {
+    "term": "neuroscientist",
+    "definition": "nhà khoa học thần kinh",
+    "synonym": "neurologist"
+  },
+  {
+    "term": "investigate",
+    "definition": "điều tra",
+    "synonym": "examine"
+  },
+  {
+    "term": "operate",
+    "definition": "hoạt động",
+    "synonym": "function"
+  },
+  {
+    "term": "vary",
+    "definition": "khác nhau",
+    "synonym": "differ"
+  },
+  {
+    "term": "hectic",
+    "definition": "bận rộn",
+    "synonym": "busy"
+  },
+  {
+    "term": "life-threatening",
+    "definition": "đe dọa tính mạng",
+    "synonym": "deadly"
+  },
+  {
+    "term": "incident",
+    "definition": "sự việc",
+    "synonym": "event"
+  },
+  {
+    "term": "attend",
+    "definition": "xử lý",
+    "synonym": "handle"
+  },
+  {
+    "term": "rescue",
+    "definition": "cứu hộ",
+    "synonym": "save"
+  },
+  {
+    "term": "up and down",
+    "definition": "dao động",
+    "synonym": "fluctuation"
+  },
+  {
+    "term": "present",
+    "definition": "đưa ra",
+    "synonym": "offer"
+  },
+  {
+    "term": "setting",
+    "definition": "bối cảnh",
+    "synonym": "context"
+  },
+  {
+    "term": "under pressure",
+    "definition": "chịu áp lực",
+    "synonym": "stressed"
+  },
+  {
+    "term": "perceive",
+    "definition": "nhận thức",
+    "synonym": "recognize"
+  },
+  {
+    "term": "threat",
+    "definition": "mối đe dọa",
+    "synonym": "danger"
+  },
+  {
+    "term": "act as",
+    "definition": "đóng vai trò là",
+    "synonym": "serve as"
+  },
+  {
+    "term": "reaction",
+    "definition": "phản ứng",
+    "synonym": "response"
+  },
+  {
+    "term": "convey",
+    "definition": "truyền đạt",
+    "synonym": "communicate"
+  },
+  {
+    "term": "arrive at",
+    "definition": "đi đến",
+    "synonym": "reach"
+  },
+  {
+    "term": "estimate",
+    "definition": "ước tính",
+    "synonym": "assess"
+  },
+  {
+    "term": "likelihood",
+    "definition": "khả năng xảy ra",
+    "synonym": "probability"
+  },
+  {
+    "term": "adverse",
+    "definition": "bất lợi",
+    "synonym": "negative"
+  },
+  {
+    "term": "victim",
+    "definition": "nạn nhân",
+    "synonym": "sufferer"
+  },
+  {
+    "term": "fraud",
+    "definition": "gian lận",
+    "synonym": "scam"
+  },
+  {
+    "term": "optimistic",
+    "definition": "lạc quan",
+    "synonym": "hopeful"
+  },
+  {
+    "term": "ignore",
+    "definition": "phớt lờ",
+    "synonym": "disregard"
+  },
+  {
+    "term": "embrace",
+    "definition": "đón nhận",
+    "synonym": "accept"
+  },
+  {
+    "term": "pattern",
+    "definition": "khuôn mẫu",
+    "synonym": "model"
+  },
+  {
+    "term": "emerge",
+    "definition": "xuất hiện",
+    "synonym": "appear"
+  },
+  {
+    "term": "hyper-vigilant",
+    "definition": "cảnh giác quá mức",
+    "synonym": "overalert"
+  },
+  {
+    "term": "alter",
+    "definition": "thay đổi",
+    "synonym": "change"
+  },
+  {
+    "term": "in response",
+    "definition": "để phản ứng lại",
+    "synonym": "reactively"
+  },
+  {
+    "term": "observe",
+    "definition": "quan sát",
+    "synonym": "witness"
+  },
+  {
+    "term": "judge",
+    "definition": "đánh giá",
+    "synonym": "assess"
+  },
+  {
+    "term": "panel",
+    "definition": "hội đồng",
+    "synonym": "committee"
+  },
+  {
+    "term": "cortisol",
+    "definition": "hormone căng thẳng",
+    "synonym": "stress hormone"
+  },
+  {
+    "term": "spike",
+    "definition": "tăng vọt",
+    "synonym": "surge"
+  },
+  {
+    "term": "alarming",
+    "definition": "đáng báo động",
+    "synonym": "worrying"
+  },
+  {
+    "term": "physiological",
+    "definition": "thuộc sinh lý",
+    "synonym": "bodily"
+  },
+  {
+    "term": "warning",
+    "definition": "cảnh báo",
+    "synonym": "alert"
+  },
+  {
+    "term": "reveal",
+    "definition": "tiết lộ",
+    "synonym": "show"
+  },
+  {
+    "term": "switch",
+    "definition": "sự chuyển đổi",
+    "synonym": "shift"
+  },
+  {
+    "term": "sudden",
+    "definition": "đột ngột",
+    "synonym": "abrupt"
+  },
+  {
+    "term": "neural",
+    "definition": "thuộc thần kinh",
+    "synonym": "nervous"
+  },
+  {
+    "term": "express",
+    "definition": "thể hiện",
+    "synonym": "show"
+  },
+  {
+    "term": "prehistoric",
+    "definition": "tiền sử",
+    "synonym": "ancient"
+  },
+  {
+    "term": "ancestor",
+    "definition": "tổ tiên",
+    "synonym": "forefather"
+  },
+  {
+    "term": "benefit from",
+    "definition": "hưởng lợi từ",
+    "synonym": "gain from"
+  },
+  {
+    "term": "hazard",
+    "definition": "mối nguy",
+    "synonym": "danger"
+  },
+  {
+    "term": "wasteful",
+    "definition": "lãng phí",
+    "synonym": "inefficient"
+  },
+  {
+    "term": "be on high alert",
+    "definition": "ở trạng thái cảnh giác cao",
+    "synonym": "watchful"
+  },
+  {
+    "term": "clinical depression",
+    "definition": "trầm cảm lâm sàng",
+    "synonym": "depression"
+  },
+  {
+    "term": "absorb",
+    "definition": "hấp thụ",
+    "synonym": "take in"
+  },
+  {
+    "term": "rapidly",
+    "definition": "nhanh chóng",
+    "synonym": "quickly"
+  },
+  {
+    "term": "tense up",
+    "definition": "căng lên",
+    "synonym": "stiffen"
+  },
+  {
+    "term": "feed",
+    "definition": "bảng tin",
+    "synonym": "stream"
+  },
+  {
+    "term": "uplifting",
+    "definition": "truyền cảm hứng",
+    "synonym": "encouraging"
+  },
+  {
+    "term": "complaint",
+    "definition": "lời phàn nàn",
+    "synonym": "grievance"
+  },
+  {
+    "term": "queue",
+    "definition": "hàng chờ",
+    "synonym": "line"
+  },
+  {
+    "term": "in turn",
+    "definition": "lần lượt / do đó",
+    "synonym": "consequently"
+  },
+  {
+    "term": "constantly",
+    "definition": "liên tục",
+    "synonym": "continually"
+  },
+  {
+    "term": "tackle",
+    "definition": "giải quyết",
+    "synonym": "handle"
+  },
+  {
+    "term": "demanding",
+    "definition": "đòi hỏi cao",
+    "synonym": "challenging"
+  },
+  {
+    "term": "conduct",
+    "definition": "tiến hành",
+    "synonym": "carry out"
+  },
+  {
+    "term": "evolution",
+    "definition": "sự tiến hóa",
+    "synonym": "development"
+  },
+  {
+    "term": "famished",
+    "definition": "rất đói",
+    "synonym": "starving"
+  },
+  {
+    "term": "pulse",
+    "definition": "mạch đập",
+    "synonym": "heartbeat"
+  },
+  {
+    "term": "sweat",
+    "definition": "mồ hôi",
+    "synonym": "perspiration"
+  },
+  {
+    "term": "enlarge",
+    "definition": "phóng to",
+    "synonym": "expand"
+  },
+  {
+    "term": "pupil",
+    "definition": "đồng tử",
+    "synonym": "eye opening"
+  },
+  {
+    "term": "spread",
+    "definition": "lan rộng",
+    "synonym": "disseminate"
+  },
+  {
+    "term": "collective",
+    "definition": "tập thể",
+    "synonym": "shared"
+  },
+  {
+    "term": "justified",
+    "definition": "có lý do chính đáng",
+    "synonym": "reasonable"
+  },
+  {
+    "term": "disaster",
+    "definition": "thảm họa",
+    "synonym": "catastrophe"
+  },
+  {
+    "term": "crash",
+    "definition": "sự sụp đổ",
+    "synonym": "collapse"
+  },
+  {
+    "term": "exaggerate",
+    "definition": "phóng đại",
+    "synonym": "overstate"
+  },
+  {
+    "term": "reliable",
+    "definition": "đáng tin cậy",
+    "synonym": "dependable"
+  },
+  {
+    "term": "temporarily",
+    "definition": "tạm thời",
+    "synonym": "briefly"
+  },
+  {
+    "term": "enhance",
+    "definition": "nâng cao",
+    "synonym": "improve"
+  },
+  {
+    "term": "take in",
+    "definition": "tiếp nhận",
+    "synonym": "absorb"
+  },
+  {
+    "term": "across the globe",
+    "definition": "trên toàn cầu",
+    "synonym": "worldwide"
+  },
+  {
+    "term": "stocks",
+    "definition": "cổ phiếu",
+    "synonym": "shares"
+  },
+  {
+    "term": "hold on",
+    "definition": "giữ lại",
+    "synonym": "retain"
+  },
+  {
+    "term": "contagious",
+    "definition": "dễ lây lan",
+    "synonym": "infectious"
+  },
+  {
+    "term": "induce",
+    "definition": "gây ra",
+    "synonym": "prompt"
+  },
+  {
+    "term": "frame",
+    "definition": "định hình",
+    "synonym": "structure"
+  },
+  {
+    "term": "conscientious",
+    "definition": "có trách nhiệm",
+    "synonym": "responsible"
+  },
+  {
+    "term": "agent",
+    "definition": "người đại diện",
+    "synonym": "representative"
+  },
+  {
+    "term": "manatee",
+    "definition": "lợn biển",
+    "synonym": "sea cow"
+  },
+  {
+    "term": "aquatic",
+    "definition": "sống dưới nước",
+    "synonym": "water-living"
+  },
+  {
+    "term": "mammal",
+    "definition": "động vật có vú",
+    "synonym": "vertebrate"
+  },
+  {
+    "term": "dugong",
+    "definition": "bò biển",
+    "synonym": "sea cow"
+  },
+  {
+    "term": "flexible",
+    "definition": "linh hoạt",
+    "synonym": "bendable"
+  },
+  {
+    "term": "flipper",
+    "definition": "vây bơi",
+    "synonym": "fin"
+  },
+  {
+    "term": "broad",
+    "definition": "rộng",
+    "synonym": "wide"
+  },
+  {
+    "term": "fluked",
+    "definition": "có đuôi chẻ",
+    "synonym": "split-tailed"
+  },
+  {
+    "term": "species",
+    "definition": "loài",
+    "synonym": "kind"
+  },
+  {
+    "term": "entire",
+    "definition": "toàn bộ",
+    "synonym": "whole"
+  },
+  {
+    "term": "steer",
+    "definition": "điều khiển",
+    "synonym": "guide"
+  },
+  {
+    "term": "pectoral",
+    "definition": "thuộc ngực",
+    "synonym": "chest-related"
+  },
+  {
+    "term": "limb",
+    "definition": "chi",
+    "synonym": "appendage"
+  },
+  {
+    "term": "propulsion",
+    "definition": "lực đẩy",
+    "synonym": "drive"
+  },
+  {
+    "term": "pelvic bones",
+    "definition": "xương chậu",
+    "synonym": "hip bones"
+  },
+  {
+    "term": "leftover",
+    "definition": "phần còn lại",
+    "synonym": "remainder"
+  },
+  {
+    "term": "visual",
+    "definition": "thuộc thị giác",
+    "synonym": "sight-related"
+  },
+  {
+    "term": "wrinkled",
+    "definition": "nhăn nheo",
+    "synonym": "creased"
+  },
+  {
+    "term": "sense",
+    "definition": "cảm nhận",
+    "synonym": "detect"
+  },
+  {
+    "term": "vibration",
+    "definition": "sự rung động",
+    "synonym": "tremor"
+  },
+  {
+    "term": "seagrass",
+    "definition": "cỏ biển",
+    "synonym": "eelgrass"
+  },
+  {
+    "term": "marine plant",
+    "definition": "thực vật biển",
+    "synonym": "sea plant"
+  },
+  {
+    "term": "graze",
+    "definition": "ăn cỏ",
+    "synonym": "nibble"
+  },
+  {
+    "term": "uproot",
+    "definition": "nhổ bật rễ",
+    "synonym": "pull up"
+  },
+  {
+    "term": "omnivorous",
+    "definition": "ăn tạp",
+    "synonym": "mixed-feeding"
+  },
+  {
+    "term": "mollusc",
+    "definition": "động vật thân mềm",
+    "synonym": "shellfish"
+  },
+  {
+    "term": "make up",
+    "definition": "chiếm / cấu thành",
+    "synonym": "constitute"
+  },
+  {
+    "term": "herbivore",
+    "definition": "động vật ăn cỏ",
+    "synonym": "plant-eater"
+  },
+  {
+    "term": "molar",
+    "definition": "răng hàm",
+    "synonym": "grinder"
+  },
+  {
+    "term": "grind",
+    "definition": "nghiền",
+    "synonym": "crush"
+  },
+  {
+    "term": "abrasive",
+    "definition": "gây mài mòn",
+    "synonym": "rough"
+  },
+  {
+    "term": "to be worn down",
+    "definition": "bị mài mòn",
+    "synonym": "eroded"
+  },
+  {
+    "term": "eventually",
+    "definition": "cuối cùng",
+    "synonym": "finally"
+  },
+  {
+    "term": "fall out",
+    "definition": "rụng ra",
+    "synonym": "detach"
+  },
+  {
+    "term": "incisor",
+    "definition": "răng cửa",
+    "synonym": "front tooth"
+  },
+  {
+    "term": "grasp",
+    "definition": "nắm lấy",
+    "synonym": "grab"
+  },
+  {
+    "term": "tear away",
+    "definition": "xé ra",
+    "synonym": "rip off"
+  },
+  {
+    "term": "seafloor",
+    "definition": "đáy biển",
+    "synonym": "seabed"
+  },
+  {
+    "term": "typically",
+    "definition": "thông thường",
+    "synonym": "generally"
+  },
+  {
+    "term": "surface",
+    "definition": "nổi lên mặt nước",
+    "synonym": "emerge"
+  },
+  {
+    "term": "frequently",
+    "definition": "thường xuyên",
+    "synonym": "often"
+  },
+  {
+    "term": "muscular",
+    "definition": "cơ bắp",
+    "synonym": "strong"
+  },
+  {
+    "term": "diaphragm",
+    "definition": "cơ hoành",
+    "synonym": "breathing muscle"
+  },
+  {
+    "term": "adjust",
+    "definition": "điều chỉnh",
+    "synonym": "modify"
+  },
+  {
+    "term": "buoyancy",
+    "definition": "sức nổi",
+    "synonym": "floatability"
+  },
+  {
+    "term": "contraction",
+    "definition": "sự co cơ",
+    "synonym": "tightening"
+  },
+  {
+    "term": "compress",
+    "definition": "nén lại",
+    "synonym": "squeeze"
+  },
+  {
+    "term": "intestine",
+    "definition": "ruột",
+    "synonym": "gut"
+  },
+  {
+    "term": "float",
+    "definition": "nổi",
+    "synonym": "drift"
+  },
+  {
+    "term": "take advantage of",
+    "definition": "tận dụng",
+    "synonym": "use"
+  },
+  {
+    "term": "coastal",
+    "definition": "ven biển",
+    "synonym": "seaside"
+  },
+  {
+    "term": "mangrove",
+    "definition": "cây ngập mặn",
+    "synonym": "mangrove tree"
+  },
+  {
+    "term": "coral",
+    "definition": "san hô",
+    "synonym": "coral"
+  },
+  {
+    "term": "coral reef",
+    "definition": "rạn san hô",
+    "synonym": "reef"
+  },
+  {
+    "term": "inland",
+    "definition": "nội địa",
+    "synonym": "interior"
+  },
+  {
+    "term": "lagoon",
+    "definition": "đầm phá",
+    "synonym": "laguna"
+  },
+  {
+    "term": "subspecies",
+    "definition": "phân loài",
+    "synonym": "race"
+  },
+  {
+    "term": "restricted",
+    "definition": "bị hạn chế",
+    "synonym": "limited"
+  },
+  {
+    "term": "ambient",
+    "definition": "xung quanh",
+    "synonym": "surrounding"
+  },
+  {
+    "term": "take refuge",
+    "definition": "ẩn náu",
+    "synonym": "shelter"
+  },
+  {
+    "term": "outfall",
+    "definition": "cửa xả",
+    "synonym": "outlet"
+  },
+  {
+    "term": "make use of",
+    "definition": "tận dụng",
+    "synonym": "utilize"
+  },
+  {
+    "term": "landlocked",
+    "definition": "không giáp biển",
+    "synonym": "inland"
+  },
+  {
+    "term": "favour",
+    "definition": "ưa thích",
+    "synonym": "prefer"
+  },
+  {
+    "term": "calm",
+    "definition": "êm đềm",
+    "synonym": "peaceful"
+  },
+  {
+    "term": "shallow",
+    "definition": "nông",
+    "synonym": "not deep"
+  },
+  {
+    "term": "heightened",
+    "definition": "tăng cao",
+    "synonym": "increased"
+  },
+  {
+    "term": "extinction",
+    "definition": "sự tuyệt chủng",
+    "synonym": "disappearance"
+  },
+  {
+    "term": "estimated",
+    "definition": "ước tính",
+    "synonym": "approximated"
+  },
+  {
+    "term": "leather",
+    "definition": "da thuộc",
+    "synonym": "hide"
+  },
+  {
+    "term": "tied to",
+    "definition": "liên quan đến",
+    "synonym": "linked to"
+  },
+  {
+    "term": "incidental",
+    "definition": "ngẫu nhiên",
+    "synonym": "accidental"
+  },
+  {
+    "term": "capture",
+    "definition": "bắt giữ",
+    "synonym": "catch"
+  },
+  {
+    "term": "undergo",
+    "definition": "trải qua",
+    "synonym": "experience"
+  },
+  {
+    "term": "entanglement",
+    "definition": "sự mắc kẹt",
+    "synonym": "trapping"
+  },
+  {
+    "term": "chief",
+    "definition": "chính",
+    "synonym": "main"
+  },
+  {
+    "term": "strike",
+    "definition": "va chạm",
+    "synonym": "hit"
+  },
+  {
+    "term": "limit",
+    "definition": "hạn chế",
+    "synonym": "restrict"
+  },
+  {
+    "term": "slow-moving",
+    "definition": "di chuyển chậm",
+    "synonym": "sluggish"
+  },
+  {
+    "term": "psychologist",
+    "definition": "nhà tâm lý học",
+    "synonym": "therapist"
+  },
+  {
+    "term": "put off",
+    "definition": "trì hoãn",
+    "synonym": "postpone"
+  },
+  {
+    "term": "break this habit",
+    "definition": "bỏ thói quen này",
+    "synonym": "stop"
+  },
+  {
+    "term": "procrastination",
+    "definition": "sự trì hoãn",
+    "synonym": "delay"
+  },
+  {
+    "term": "delay",
+    "definition": "trì hoãn",
+    "synonym": "postpone"
+  },
+  {
+    "term": "urgent",
+    "definition": "cấp bách",
+    "synonym": "pressing"
+  },
+  {
+    "term": "from time to time",
+    "definition": "thỉnh thoảng",
+    "synonym": "occasionally"
+  },
+  {
+    "term": "compose",
+    "definition": "soạn",
+    "synonym": "write"
+  },
+  {
+    "term": "let down",
+    "definition": "làm thất vọng",
+    "synonym": "disappoint"
+  },
+  {
+    "term": "put together",
+    "definition": "chuẩn bị",
+    "synonym": "assemble"
+  },
+  {
+    "term": "at hand",
+    "definition": "sắp đến",
+    "synonym": "near"
+  },
+  {
+    "term": "deep down",
+    "definition": "thực ra",
+    "synonym": "really"
+  },
+  {
+    "term": "get on with",
+    "definition": "tiếp tục làm",
+    "synonym": "continue"
+  },
+  {
+    "term": "procrastinate",
+    "definition": "trì hoãn",
+    "synonym": "delay"
+  },
+  {
+    "term": "berate",
+    "definition": "mắng mỏ",
+    "synonym": "scold"
+  },
+  {
+    "term": "contrary to",
+    "definition": "trái với",
+    "synonym": "opposite to"
+  },
+  {
+    "term": "belief",
+    "definition": "niềm tin",
+    "synonym": "opinion"
+  },
+  {
+    "term": "mood management",
+    "definition": "quản lý tâm trạng",
+    "synonym": "emotion control"
+  },
+  {
+    "term": "keen to",
+    "definition": "háo hức muốn",
+    "synonym": "eager to"
+  },
+  {
+    "term": "threaten",
+    "definition": "đe dọa",
+    "synonym": "endanger"
+  },
+  {
+    "term": "sense of self-worth",
+    "definition": "ý thức giá trị bản thân",
+    "synonym": "self-esteem"
+  },
+  {
+    "term": "brain imaging",
+    "definition": "chụp ảnh não",
+    "synonym": "brain scan"
+  },
+  {
+    "term": "detection",
+    "definition": "sự phát hiện",
+    "synonym": "discovery"
+  },
+  {
+    "term": "emotion regulation",
+    "definition": "điều chỉnh cảm xúc",
+    "synonym": "emotion control"
+  },
+  {
+    "term": "chronically",
+    "definition": "mạn tính",
+    "synonym": "constantly"
+  },
+  {
+    "term": "emotionally loaded",
+    "definition": "nặng cảm xúc",
+    "synonym": "stressful"
+  },
+  {
+    "term": "prime candidates for",
+    "definition": "đối tượng rất phù hợp cho",
+    "synonym": "ideal candidates"
+  },
+  {
+    "term": "self-esteem",
+    "definition": "lòng tự trọng",
+    "synonym": "self-worth"
+  },
+  {
+    "term": "perfectionist",
+    "definition": "người cầu toàn",
+    "synonym": "idealist"
+  },
+  {
+    "term": "harshly",
+    "definition": "nghiêm khắc",
+    "synonym": "severely"
+  },
+  {
+    "term": "evaluate",
+    "definition": "đánh giá",
+    "synonym": "assess"
+  },
+  {
+    "term": "rewarding",
+    "definition": "đáng làm",
+    "synonym": "satisfying"
+  },
+  {
+    "term": "condition",
+    "definition": "rèn cho quen",
+    "synonym": "train"
+  },
+  {
+    "term": "engage in",
+    "definition": "tham gia vào",
+    "synonym": "participate in"
+  },
+  {
+    "term": "mood boost",
+    "definition": "sự cải thiện tâm trạng",
+    "synonym": "uplift"
+  },
+  {
+    "term": "in the long run",
+    "definition": "về lâu dài",
+    "synonym": "eventually"
+  },
+  {
+    "term": "temporary",
+    "definition": "tạm thời",
+    "synonym": "short-term"
+  },
+  {
+    "term": "sense of guilt",
+    "definition": "cảm giác tội lỗi",
+    "synonym": "remorse"
+  },
+  {
+    "term": "reinforce",
+    "definition": "củng cố",
+    "synonym": "strengthen"
+  },
+  {
+    "term": "tendency",
+    "definition": "xu hướng",
+    "synonym": "inclination"
+  },
+  {
+    "term": "toll on",
+    "definition": "tác hại đối với",
+    "synonym": "damage to"
+  },
+  {
+    "term": "productivity",
+    "definition": "năng suất",
+    "synonym": "efficiency"
+  },
+  {
+    "term": "misconduct",
+    "definition": "hành vi sai trái",
+    "synonym": "wrongdoing"
+  },
+  {
+    "term": "plagiarism",
+    "definition": "đạo văn",
+    "synonym": "copying"
+  },
+  {
+    "term": "be closely linked with",
+    "definition": "có liên hệ chặt chẽ với",
+    "synonym": "associated with"
+  },
+  {
+    "term": "fraudulent excuse",
+    "definition": "lý do giả dối",
+    "synonym": "lie"
+  },
+  {
+    "term": "on average",
+    "definition": "trung bình",
+    "synonym": "generally"
+  },
+  {
+    "term": "a quarter of",
+    "definition": "một phần tư",
+    "synonym": "one-fourth"
+  },
+  {
+    "term": "workday",
+    "definition": "ngày làm việc",
+    "synonym": "working day"
+  },
+  {
+    "term": "outcome",
+    "definition": "kết quả",
+    "synonym": "result"
+  },
+  {
+    "term": "survey",
+    "definition": "khảo sát",
+    "synonym": "poll"
+  },
+  {
+    "term": "annual",
+    "definition": "hằng năm",
+    "synonym": "yearly"
+  },
+  {
+    "term": "a measure of",
+    "definition": "thước đo của",
+    "synonym": "indicator of"
+  },
+  {
+    "term": "chronic",
+    "definition": "mạn tính",
+    "synonym": "persistent"
+  },
+  {
+    "term": "correlate with",
+    "definition": "có tương quan với",
+    "synonym": "be associated with"
+  },
+  {
+    "term": "well-being",
+    "definition": "sức khỏe tinh thần",
+    "synonym": "welfare"
+  },
+  {
+    "term": "depression",
+    "definition": "trầm cảm",
+    "synonym": "low spirits"
+  },
+  {
+    "term": "headache",
+    "definition": "đau đầu",
+    "synonym": "head pain"
+  },
+  {
+    "term": "flu",
+    "definition": "cúm",
+    "synonym": "influenza"
+  },
+  {
+    "term": "digestive",
+    "definition": "thuộc tiêu hóa",
+    "synonym": "stomach-related"
+  },
+  {
+    "term": "destructive coping strategy",
+    "definition": "cách đối phó tiêu cực",
+    "synonym": "harmful strategy"
+  },
+  {
+    "term": "prone to",
+    "definition": "dễ bị",
+    "synonym": "likely to"
+  },
+  {
+    "term": "personality",
+    "definition": "tính cách",
+    "synonym": "character"
+  },
+  {
+    "term": "trait",
+    "definition": "đặc điểm",
+    "synonym": "characteristic"
+  },
+  {
+    "term": "demographics",
+    "definition": "nhân khẩu học",
+    "synonym": "population data"
+  },
+  {
+    "term": "route out of",
+    "definition": "lối thoát khỏi",
+    "synonym": "way out of"
+  },
+  {
+    "term": "vicious",
+    "definition": "xấu xa/gây hại",
+    "synonym": "harmful"
+  },
+  {
+    "term": "synthetic",
+    "definition": "nhân tạo",
+    "synonym": "artificial"
+  }
+]

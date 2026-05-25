@@ -1,0 +1,230 @@
+/* ============================================
+   GLOBAL STYLES — QuizLearn App
+   Theme: Scandinavian Minimalist / Teal
+   Pure vanilla CSS, no Tailwind
+   ============================================ */
+
+/* === GOOGLE FONTS === */
+/* Playfair Display: hỗ trợ tiếng Việt đầy đủ, giữ được nét serif thanh lịch */
+/* Be Vietnam Pro: font body thiết kế riêng cho tiếng Việt */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap');
+/* === CSS CUSTOM PROPERTIES === */
+:root {
+  /* Primary — Duck Egg Teal (từ ảnh) */
+  --primary-50:  #edf6f4;
+  --primary-100: #d0ebe4;
+  --primary-200: #a3d4c8;
+  --primary-300: #72bbb0;
+  --primary-400: #4aa49b;
+  --primary-500: #2d8f86;   /* key brand teal */
+  --primary-600: #217870;
+  --primary-700: #185e57;
+  --primary-800: #10433e;
+  --primary-900: #092926;
+
+  /* Accent — Warm Sage */
+  --accent-100: #e8ede6;
+  --accent-400: #8da882;
+  --accent-500: #6b8f5e;
+  --accent-600: #4e6e44;
+
+  /* Success */
+  --success-50:  #f0fdf6;
+  --success-100: #d1fae6;
+  --success-400: #34d37a;
+  --success-500: #10b759;
+  --success-600: #059642;
+
+  /* Error */
+  --error-50:  #fef3f2;
+  --error-400: #fb8080;
+  --error-500: #f04343;
+  --error-600: #cc2424;
+
+  /* Amber */
+  --amber-50:  #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-400: #fbbf24;
+  --amber-500: #f5a623;
+  --amber-600: #d97706;
+
+  /* Orange */
+  --orange-500: #f97316;
+
+  /* Surface — Warm White / Linen (từ ảnh) */
+  --surface-50:  #fafbfb;
+  --surface-100: #f2f5f5;
+  --surface-200: #e3eaea;
+  --surface-300: #c9d4d4;
+  --surface-400: #94a8a8;
+  --surface-500: #617474;
+  --surface-600: #495858;
+  --surface-700: #33403f;
+  --surface-800: #1e2a2a;
+  --surface-850: #172020;
+  --surface-900: #0d1818;
+  --surface-950: #050d0d;
+
+  /* Font — Playfair Display (display/serif) + Be Vietnam Pro (body) */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans:    'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === RESET & BASE === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  background-color: var(--surface-50);
+  color: var(--surface-800);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+}
+
+body.dark {
+  background-color: var(--surface-900);
+  color: var(--surface-100);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a { text-decoration: none; color: inherit; }
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--surface-300);
+  border-radius: 99px;
+}
+body.dark ::-webkit-scrollbar-thumb { background: var(--surface-700); }
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(45, 143, 134, 0.35); }
+  50%       { box-shadow: 0 0 0 8px rgba(45, 143, 134, 0); }
+}
+@keyframes correctFlash {
+  0%   { background-color: rgba(16, 183, 89, 0); }
+  20%  { background-color: rgba(16, 183, 89, 0.13); }
+  100% { background-color: rgba(16, 183, 89, 0); }
+}
+@keyframes incorrectFlash {
+  0%   { background-color: rgba(240, 67, 67, 0); }
+  20%  { background-color: rgba(240, 67, 67, 0.13); }
+  100% { background-color: rgba(240, 67, 67, 0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.04); }
+  70%  { transform: scale(0.97); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+.animate-fade-in-up     { animation: fadeInUp     0.5s var(--ease-smooth) forwards; }
+.animate-fade-in-scale  { animation: fadeInScale  0.4s var(--ease-smooth) forwards; }
+.animate-slide-in-right { animation: slideInRight 0.4s var(--ease-smooth) forwards; }
+.animate-pulse-glow     { animation: pulseGlow    2s ease-in-out infinite; }
+.animate-correct-flash  { animation: correctFlash   0.8s ease-out forwards; }
+.animate-incorrect-flash{ animation: incorrectFlash 0.8s ease-out forwards; }
+.animate-bounce-in      { animation: bounceIn     0.6s var(--ease-smooth) forwards; }
+.animate-count-up       { animation: countUp      0.4s var(--ease-smooth) forwards; }
+.animate-ping           { animation: ping         1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* === UTILITY CLASSES === */
+.confetti-particle {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* === GLOBAL BUTTON RESET === */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

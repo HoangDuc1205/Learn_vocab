@@ -1,0 +1,242 @@
+/* ============================================
+   MULTIPLE CHOICE COMPONENT — Teal Minimal
+   ============================================ */
+
+:host {
+  display: block;
+}
+
+/* === BADGE === */
+.mc-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6875rem;
+  border-radius: 99px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background: var(--primary-50);
+  color: var(--primary-600);
+  margin-bottom: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border: 1px solid var(--primary-100);
+}
+
+:host-context(.dark) .mc-badge,
+body.dark .mc-badge {
+  background: rgba(45, 143, 134, 0.12);
+  color: var(--primary-300);
+  border-color: rgba(45, 143, 134, 0.25);
+}
+
+/* === QUESTION === */
+.mc-question {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 400;
+  color: var(--surface-900);
+  margin-bottom: 2rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .mc-question { font-size: 2rem; }
+}
+
+:host-context(.dark) .mc-question,
+body.dark .mc-question { color: var(--surface-50); }
+
+/* === CHOICES LIST === */
+.mc-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* === CHOICE BUTTONS === */
+.choice-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.9375rem 1.125rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.18s var(--ease-smooth);
+  border: 1.5px solid var(--surface-200);
+  background: white;
+  color: var(--surface-800);
+  line-height: 1.55;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+}
+
+:host-context(.dark) .choice-btn,
+body.dark .choice-btn {
+  border-color: var(--surface-700);
+  background: var(--surface-850);
+  color: var(--surface-200);
+}
+
+.choice-btn:hover:not(:disabled) {
+  border-color: var(--primary-400);
+  background: var(--primary-50);
+  transform: translateX(3px);
+  color: var(--primary-700);
+}
+
+:host-context(.dark) .choice-btn:hover:not(:disabled),
+body.dark .choice-btn:hover:not(:disabled) {
+  border-color: var(--primary-500);
+  background: rgba(45, 143, 134, 0.1);
+  color: var(--primary-200);
+}
+
+.choice-btn.correct {
+  border-color: var(--success-500);
+  background: var(--success-50);
+  color: var(--success-600);
+}
+
+:host-context(.dark) .choice-btn.correct,
+body.dark .choice-btn.correct {
+  background: rgba(16, 183, 89, 0.1);
+  color: var(--success-400);
+}
+
+.choice-btn.incorrect {
+  border-color: var(--error-500);
+  background: var(--error-50);
+  color: var(--error-600);
+}
+
+:host-context(.dark) .choice-btn.incorrect,
+body.dark .choice-btn.incorrect {
+  background: rgba(240, 67, 67, 0.1);
+  color: var(--error-400);
+}
+
+.choice-btn.highlight-correct {
+  border-color: var(--success-500);
+  background: var(--success-50);
+}
+
+.choice-btn:disabled { cursor: not-allowed; }
+
+/* === CHOICE LABEL === */
+.choice-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 0.4rem;
+  background: var(--surface-100);
+  color: var(--surface-500);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  margin-right: 0.875rem;
+  flex-shrink: 0;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+:host-context(.dark) .choice-label,
+body.dark .choice-label {
+  background: var(--surface-700);
+  color: var(--surface-400);
+}
+
+/* === DON'T KNOW BUTTON === */
+.btn-dont-know {
+  margin-top: 1.25rem;
+  width: 100%;
+  padding: 0.6875rem;
+  border-radius: var(--radius-md);
+  color: var(--surface-400);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.btn-dont-know:hover {
+  color: var(--surface-600);
+  background: var(--surface-100);
+  border-radius: var(--radius-md);
+}
+
+:host-context(.dark) .btn-dont-know:hover,
+body.dark .btn-dont-know:hover {
+  color: var(--surface-300);
+  background: var(--surface-800);
+}
+
+/* === FEEDBACK === */
+.mc-feedback {
+  margin-top: 1.25rem;
+  padding: 0.9375rem 1rem;
+  border-radius: var(--radius-md);
+}
+
+.mc-feedback.correct {
+  background: var(--success-50);
+  border: 1.5px solid var(--success-100);
+}
+
+.mc-feedback.incorrect {
+  background: var(--error-50);
+  border: 1.5px solid rgba(240, 67, 67, 0.15);
+}
+
+body.dark .mc-feedback.correct {
+  background: rgba(16, 183, 89, 0.08);
+  border-color: rgba(16, 183, 89, 0.18);
+}
+
+body.dark .mc-feedback.incorrect {
+  background: rgba(240, 67, 67, 0.08);
+  border-color: rgba(240, 67, 67, 0.18);
+}
+
+.feedback-text-success {
+  color: var(--success-600);
+  font-weight: 500;
+}
+
+:host-context(.dark) .feedback-text-success,
+body.dark .feedback-text-success { color: var(--success-400); }
+
+.feedback-text-error {
+  color: var(--error-600);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+:host-context(.dark) .feedback-text-error,
+body.dark .feedback-text-error { color: var(--error-400); }
+
+.feedback-answer {
+  color: var(--surface-500);
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+:host-context(.dark) .feedback-answer,
+body.dark .feedback-answer { color: var(--surface-400); }
+
+.feedback-answer-highlight {
+  font-weight: 500;
+  color: var(--success-600);
+}
+
+:host-context(.dark) .feedback-answer-highlight,
+body.dark .feedback-answer-highlight { color: var(--success-400); }

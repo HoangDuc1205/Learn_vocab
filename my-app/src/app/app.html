@@ -1,0 +1,273 @@
+<div class="app-container">
+  <!-- ─── HEADER ─── -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="header-logo">
+          <lucide-icon name="brain" [size]="20"></lucide-icon>
+        </div>
+        <div>
+          <h1 class="header-title">QuizLearn</h1>
+          <p class="header-subtitle">{{ words().length }} từ · {{ tests().length }} test</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button
+          *ngIf="view() !== 'start'"
+          (click)="goHome()"
+          class="btn-ghost"
+          id="btn-go-home"
+          type="button"
+        >
+          <lucide-icon name="home" [size]="15"></lucide-icon>
+          <span class="btn-text-hide-mobile">Trang chủ</span>
+        </button>
+        <button
+          (click)="openImport()"
+          class="btn-ghost"
+          id="btn-manage-set"
+        >
+          <lucide-icon name="settings" [size]="15"></lucide-icon>
+          <span class="btn-text-hide-mobile">Manage Set</span>
+        </button>
+        <button
+          (click)="toggleTheme()"
+          class="btn-icon"
+          id="btn-toggle-theme"
+        >
+          <lucide-icon [name]="dark() ? 'sun' : 'moon'" [size]="18"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main class="main-content">
+
+    <!-- ─── START SCREEN ─── -->
+    <div *ngIf="view() === 'start'" class="animate-fade-in-up">
+      <div *ngIf="vocabSyncNotice()" class="sync-notice animate-fade-in-up">
+        <lucide-icon name="check-circle-2" [size]="18"></lucide-icon>
+        <span>{{ vocabSyncNotice() }}</span>
+        <button type="button" class="sync-notice-dismiss" (click)="dismissSyncNotice()" aria-label="Đóng">×</button>
+      </div>
+
+      <div class="progress-section">
+        <p class="test-progress-label">Test {{ selectedTestNum() }} · {{ activeChunkLabel() }} (cụm hiện tại)</p>
+        <app-progress-tracker
+          [words]="activeChunk()"
+          [totalQuestions]="totalAnswered()"
+          [answeredQuestions]="totalCorrect()"
+        ></app-progress-tracker>
+      </div>
+
+      <div class="glass-card glass-card-hover">
+        <div class="start-center">
+          <div class="start-icon-wrap animate-pulse-glow">
+            <lucide-icon name="zap" [size]="36"></lucide-icon>
+          </div>
+          <h2 class="start-title">Chọn Test để học</h2>
+          <div class="start-badge">
+            <span class="start-badge-dot animate-ping"></span>
+            Test {{ selectedTestNum() }} · {{ activeChunkLabel() }} · {{ activeBatchPhaseText() }}
+          </div>
+          <p class="start-desc">
+            Mỗi test <strong>50 từ</strong>, cụm <strong>10 từ</strong> qua <strong>5 vòng</strong>: định nghĩa (TN + TL) →
+            synonym riêng (TN + TL) → nhập từ gốc từ định nghĩa.
+          </p>
+
+          <div class="test-picker-section">
+            <p class="test-picker-title">Danh sách test</p>
+            <div class="test-picker-grid">
+              <button
+                *ngFor="let test of tests()"
+                type="button"
+                class="test-picker-btn"
+                [class.selected]="selectedTestIndex() === test.index"
+                [class.complete]="test.isComplete"
+                (click)="selectTest(test.index)"
+                [id]="'btn-test-' + test.number"
+              >
+                <span class="test-picker-num">Test {{ test.number }}</span>
+                <span class="test-picker-meta">{{ test.mastered }}/{{ test.total }} mastered</span>
+                <span class="test-picker-phase">{{ test.phaseLabel }}</span>
+                <span class="test-picker-bar">
+                  <span class="test-picker-bar-fill" [style.width.%]="test.progressPct"></span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="how-grid how-grid-5">
+            <div class="how-card">
+              <p class="how-card-title">Vòng 1</p>
+              <p class="how-card-desc">TN định nghĩa</p>
+            </div>
+            <div class="how-card">
+              <p class="how-card-title">Vòng 2</p>
+              <p class="how-card-desc">TL định nghĩa</p>
+            </div>
+            <div class="how-card">
+              <p class="how-card-title">Vòng 3</p>
+              <p class="how-card-desc">TN synonym</p>
+            </div>
+            <div class="how-card">
+              <p class="how-card-title">Vòng 4</p>
+              <p class="how-card-desc">TL synonym</p>
+            </div>
+            <div class="how-card">
+              <p class="how-card-title">Vòng 5</p>
+              <p class="how-card-desc">Nhập từ gốc</p>
+            </div>
+          </div>
+
+          <button
+            (click)="startSession()"
+            class="btn-primary btn-lg"
+            id="btn-start-learning"
+            [disabled]="isSelectedTestComplete()"
+          >
+            <lucide-icon name="zap" [size]="20"></lucide-icon>
+            {{ isSelectedTestComplete() ? 'Test đã hoàn thành' : 'Start Learning — Test ' + selectedTestNum() }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── LEARN VIEW ─── -->
+    <div *ngIf="view() === 'learn' && currentWord()">
+      <div class="learn-session-bar">
+        <span>{{ roundText() }}</span>
+        <span>{{ currentIdx() + 1 }} / {{ queue().length }}</span>
+      </div>
+      <div class="session-progress-track">
+        <div
+          class="session-progress-fill"
+          [style.width.%]="sessionProgress()"
+        ></div>
+      </div>
+
+      <div class="learn-progress-section">
+        <app-progress-tracker
+          [words]="activeChunk()"
+          [totalQuestions]="totalAnswered()"
+          [answeredQuestions]="totalCorrect()"
+        ></app-progress-tracker>
+      </div>
+
+      <div class="glass-card">
+        <p class="question-label" *ngIf="questionType() === 'mc'">
+          Definition of
+        </p>
+        <p class="question-label" *ngIf="questionType() === 'written'">
+          Định nghĩa của
+        </p>
+        <p class="question-label" *ngIf="questionType() === 'synonym_mc'">
+          Chọn synonym của
+        </p>
+        <p class="question-label" *ngIf="questionType() === 'synonym_written'">
+          Gõ synonym của
+        </p>
+        <p class="question-label" *ngIf="questionType() === 'vocab'">
+          Nhập từ vựng cho định nghĩa
+        </p>
+
+        <app-multiple-choice
+          *ngIf="questionType() === 'mc'"
+          [question]="currentWord()!.term"
+          [choices]="choices()"
+          [correctAnswer]="currentWord()!.definition"
+          badgeLabel="Trắc nghiệm định nghĩa"
+          (answer)="handleAnswer($event)"
+          (dontKnow)="handleDontKnow()"
+        ></app-multiple-choice>
+
+        <app-written-input
+          *ngIf="questionType() === 'written'"
+          [question]="currentWord()!.term"
+          [correctAnswer]="currentWord()!.definition"
+          badgeLabel="Tự luận định nghĩa"
+          placeholder="Gõ định nghĩa..."
+          (answer)="handleAnswer($event)"
+          (dontKnow)="handleDontKnow()"
+        ></app-written-input>
+
+        <app-multiple-choice
+          *ngIf="questionType() === 'synonym_mc'"
+          [question]="currentWord()!.term"
+          [choices]="synonymChoices()"
+          [correctAnswer]="currentWord()!.synonym"
+          badgeLabel="Trắc nghiệm synonym"
+          (answer)="handleAnswer($event)"
+          (dontKnow)="handleDontKnow()"
+        ></app-multiple-choice>
+
+        <app-written-input
+          *ngIf="questionType() === 'synonym_written'"
+          [question]="currentWord()!.term"
+          [correctAnswer]="currentWord()!.synonym"
+          badgeLabel="Tự luận synonym"
+          placeholder="Gõ synonym..."
+          (answer)="handleAnswer($event)"
+          (dontKnow)="handleDontKnow()"
+        ></app-written-input>
+
+        <app-written-input
+          *ngIf="questionType() === 'vocab'"
+          [question]="currentWord()!.definition"
+          [correctAnswer]="vocabCorrectAnswer()"
+          [alternateAnswers]="vocabAlternateAnswers()"
+          badgeLabel="Nhập từ vựng"
+          placeholder="Gõ từ tiếng Anh..."
+          (answer)="handleAnswer($event)"
+          (dontKnow)="handleDontKnow()"
+        ></app-written-input>
+      </div>
+    </div>
+
+    <!-- ─── PHASE TRANSITION ─── -->
+    <div *ngIf="view() === 'phase_transition'" class="glass-card glass-card-lg animate-fade-in-up">
+      <app-phase-transition
+        [phase]="transitionPhase()"
+        [words]="transitionWords()"
+        (continueRound)="startNextRound()"
+      ></app-phase-transition>
+    </div>
+
+    <!-- ─── SESSION COMPLETE ─── -->
+    <div *ngIf="view() === 'session_complete'" class="glass-card glass-card-lg">
+      <app-completion-screen
+        [words]="activeBatch()"
+        [testNumber]="selectedTestNum()"
+        [isSessionComplete]="true"
+        [sessionWords]="sessionWords()"
+        (restart)="handleRestart()"
+        (continue)="handleContinue()"
+      ></app-completion-screen>
+    </div>
+
+    <!-- ─── ALL COMPLETE ─── -->
+    <div *ngIf="view() === 'all_complete'" class="glass-card glass-card-lg">
+      <app-completion-screen
+        [words]="words()"
+        [isSessionComplete]="false"
+        [sessionWords]="sessionWords()"
+        (restart)="handleRestart()"
+      ></app-completion-screen>
+    </div>
+  </main>
+
+  <app-import-modal
+    [isOpen]="showImportModal()"
+    [currentCount]="words().length"
+    [bundledCount]="bundledVocabCount"
+    (close)="closeImport()"
+    (import)="handleImport($event)"
+    (syncFromFile)="syncFromBundledJson()"
+  ></app-import-modal>
+
+  <footer class="app-footer">
+    Built with Angular &amp; Lucide Icons
+  </footer>
+</div>

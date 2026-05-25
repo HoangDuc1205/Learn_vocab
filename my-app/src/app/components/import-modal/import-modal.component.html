@@ -1,0 +1,148 @@
+<div *ngIf="isOpen" class="modal-backdrop" (click)="handleBackdropClick($event)">
+  <div class="modal-content">
+    <!-- Header -->
+    <div class="modal-header">
+      <div>
+        <h2 class="modal-title">Import Vocabulary</h2>
+        <p class="modal-subtitle">Current set: {{ currentCount }} terms · Lưu tự động trên trình duyệt</p>
+      </div>
+      <button
+        (click)="handleClose()"
+        class="modal-close-btn"
+        id="close-import-modal"
+      >
+        <lucide-icon name="x" [size]="20"></lucide-icon>
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button
+        (click)="setTab('paste')"
+        [ngClass]="{'active': activeTab === 'paste'}"
+        class="tab-btn"
+        id="tab-paste"
+      >
+        <lucide-icon name="clipboard-paste" [size]="16"></lucide-icon>
+        Quick Paste
+      </button>
+      <button
+        (click)="setTab('file')"
+        [ngClass]="{'active': activeTab === 'file'}"
+        class="tab-btn"
+        id="tab-file"
+      >
+        <lucide-icon name="file-json" [size]="16"></lucide-icon>
+        Upload JSON
+      </button>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="modal-error">
+      <lucide-icon name="alert-circle" [size]="16" class="modal-error-icon"></lucide-icon>
+      <span>{{ error }}</span>
+    </div>
+
+    <!-- Paste Tab -->
+    <div *ngIf="activeTab === 'paste'" class="animate-fade-in-up">
+      <div class="separator-section">
+        <label class="separator-label">
+          Separator
+        </label>
+        <div class="separator-options">
+          <button
+            *ngFor="let opt of separatorOptions"
+            (click)="handleSeparatorChange(opt.value)"
+            [ngClass]="{'active': separator === opt.value}"
+            class="separator-btn"
+          >
+            {{ opt.label }}
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        [ngModel]="pasteText"
+        (ngModelChange)="handlePasteChange($event)"
+        class="paste-textarea"
+        [placeholder]="'Paste your vocabulary list here...\n\nExample:\nkākāpō' + (separator === '\t' ? '\t' : separator) + 'vẹt kākāpō\nnocturnal' + (separator === '\t' ? '\t' : separator) + 'hoạt động về đêm'"
+        id="paste-input"
+      ></textarea>
+
+      <!-- Preview -->
+      <div *ngIf="preview.length > 0" class="preview-section">
+        <p class="preview-title">Preview (first 5)</p>
+        <div class="preview-list">
+          <div
+            *ngFor="let item of preview"
+            class="preview-item"
+          >
+            <lucide-icon name="check-circle-2" [size]="14" class="preview-icon"></lucide-icon>
+            <span class="preview-term">{{ item.term }}</span>
+            <span class="preview-arrow">→</span>
+            <span class="preview-definition">{{ item.definition }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button
+          (click)="handlePasteImport()"
+          [disabled]="!pasteText.trim()"
+          class="btn-primary"
+          id="btn-import-paste"
+        >
+          <lucide-icon name="upload" [size]="16"></lucide-icon>
+          Import {{ preview.length > 0 ? '(' + getParsedCount() + ' terms)' : '' }}
+        </button>
+        <button
+          (click)="pasteText = ''; preview = []; error = '';"
+          class="btn-ghost"
+        >
+          <lucide-icon name="trash-2" [size]="14"></lucide-icon>
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- File Tab -->
+    <div *ngIf="activeTab === 'file'" class="animate-fade-in-up">
+      <div
+        (click)="triggerFileInput()"
+        class="file-drop-zone"
+      >
+        <div class="file-drop-icon">
+          <lucide-icon name="file-json" [size]="28"></lucide-icon>
+        </div>
+        <p class="file-drop-text">Click to upload a JSON file</p>
+        <p class="file-drop-hint">Accepts .json files with [&#123;"term": "...", "definition": "..."&#125;] format</p>
+      </div>
+      <input
+        #fileInput
+        type="file"
+        accept=".json"
+        (change)="handleFileUpload($event)"
+        class="file-input-hidden"
+        id="file-upload-input"
+      />
+    </div>
+
+  <div class="modal-sync-section">
+    <p class="modal-sync-title">Cập nhật từ file dự án</p>
+    <p class="modal-sync-desc">
+      Đang học: <strong>{{ currentCount }}</strong> từ · File <code>vocabulary.json</code>:
+      <strong>{{ bundledCount }}</strong> từ
+    </p>
+    <button
+      type="button"
+      class="btn-primary modal-sync-btn"
+      id="btn-sync-vocabulary-json"
+      (click)="syncFromFile.emit()"
+    >
+      <lucide-icon name="rotate-ccw" [size]="16"></lucide-icon>
+      Đồng bộ vocabulary.json
+    </button>
+    <p class="modal-sync-hint">Giữ tiến độ các từ trùng tên; thêm từ mới, cập nhật nghĩa/synonym.</p>
+  </div>
+  </div>
+</div>

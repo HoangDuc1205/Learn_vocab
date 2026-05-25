@@ -1,0 +1,159 @@
+/* ============================================
+   PROGRESS TRACKER COMPONENT — Teal Minimal
+   ============================================ */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* === PROGRESS BAR === */
+.progress-bar-track {
+  height: 0.5rem;
+  background: var(--surface-200);
+  border-radius: 99px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+
+:host-context(.dark) .progress-bar-track,
+body.dark .progress-bar-track { background: var(--surface-800); }
+
+.progress-bar-fill {
+  height: 100%;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dùng màu solid flat thay gradient — đồng bộ với theme */
+.progress-bar-fill.mastered {
+  background: var(--success-500);
+}
+
+.progress-bar-fill.in-progress {
+  background: var(--amber-500);
+}
+
+.progress-bar-fill.learning {
+  background: var(--primary-500);
+}
+
+/* === STATS GRID === */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid transparent;
+}
+
+.stat-card.success {
+  background: var(--success-50);
+  border-color: var(--success-100);
+}
+
+:host-context(.dark) .stat-card.success,
+body.dark .stat-card.success {
+  background: rgba(16, 183, 89, 0.08);
+  border-color: rgba(16, 183, 89, 0.18);
+}
+
+.stat-card.amber {
+  background: var(--amber-50);
+  border-color: var(--amber-100);
+}
+
+:host-context(.dark) .stat-card.amber,
+body.dark .stat-card.amber {
+  background: rgba(245, 166, 35, 0.08);
+  border-color: rgba(245, 166, 35, 0.18);
+}
+
+.stat-card.primary {
+  background: var(--primary-50);
+  border-color: var(--primary-100);
+}
+
+:host-context(.dark) .stat-card.primary,
+body.dark .stat-card.primary {
+  background: rgba(45, 143, 134, 0.08);
+  border-color: rgba(45, 143, 134, 0.18);
+}
+
+/* === STAT ICON === */
+.stat-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon.success {
+  background: var(--success-100);
+  color: var(--success-600);
+}
+
+body.dark .stat-icon.success {
+  background: rgba(16, 183, 89, 0.15);
+  color: var(--success-400);
+}
+
+.stat-icon.amber {
+  background: var(--amber-100);
+  color: var(--amber-600);
+}
+
+body.dark .stat-icon.amber {
+  background: rgba(245, 166, 35, 0.15);
+  color: var(--amber-400);
+}
+
+.stat-icon.primary {
+  background: var(--primary-100);
+  color: var(--primary-600);
+}
+
+body.dark .stat-icon.primary {
+  background: rgba(45, 143, 134, 0.15);
+  color: var(--primary-300);
+}
+
+/* === STAT TEXT === */
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.stat-value.success { color: var(--success-600); }
+.stat-value.amber   { color: var(--amber-600);   }
+.stat-value.primary { color: var(--primary-600); }
+
+:host-context(.dark) .stat-value.success,
+body.dark .stat-value.success { color: var(--success-400); }
+:host-context(.dark) .stat-value.amber,
+body.dark .stat-value.amber   { color: var(--amber-400);   }
+:host-context(.dark) .stat-value.primary,
+body.dark .stat-value.primary { color: var(--primary-300); }
+
+.stat-label {
+  font-size: 0.6875rem;
+  color: var(--surface-400);
+  font-weight: 500;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
