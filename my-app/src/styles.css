@@ -7,20 +7,20 @@
 /* === GOOGLE FONTS === */
 /* Playfair Display: hỗ trợ tiếng Việt đầy đủ, giữ được nét serif thanh lịch */
 /* Be Vietnam Pro: font body thiết kế riêng cho tiếng Việt */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap');
 /* === CSS CUSTOM PROPERTIES === */
 :root {
-  /* Primary — Duck Egg Teal (từ ảnh) */
-  --primary-50:  #edf6f4;
-  --primary-100: #d0ebe4;
-  --primary-200: #a3d4c8;
-  --primary-300: #72bbb0;
-  --primary-400: #4aa49b;
-  --primary-500: #2d8f86;   /* key brand teal */
-  --primary-600: #217870;
-  --primary-700: #185e57;
-  --primary-800: #10433e;
-  --primary-900: #092926;
+  /* Primary — Ocean Blue / Sapphire */
+  --primary-50:  #eef7ff;
+  --primary-100: #d5eaff;
+  --primary-200: #b3d9ff;
+  --primary-300: #85bfff;
+  --primary-400: #549cfb;
+  --primary-500: #247fc7;   /* key brand ocean blue */
+  --primary-600: #1a62a3;
+  --primary-700: #144e85;
+  --primary-800: #11426e;
+  --primary-900: #0b2945;
 
   /* Accent — Warm Sage */
   --accent-100: #e8ede6;
@@ -52,18 +52,18 @@
   --orange-500: #f97316;
 
   /* Surface — Warm White / Linen (từ ảnh) */
-  --surface-50:  #fafbfb;
-  --surface-100: #f2f5f5;
-  --surface-200: #e3eaea;
-  --surface-300: #c9d4d4;
-  --surface-400: #94a8a8;
-  --surface-500: #617474;
-  --surface-600: #495858;
-  --surface-700: #33403f;
-  --surface-800: #1e2a2a;
-  --surface-850: #172020;
-  --surface-900: #0d1818;
-  --surface-950: #050d0d;
+  --surface-50:  #f8fbff;
+  --surface-100: #eef4fa;
+  --surface-200: #e0e9f2;
+  --surface-300: #c9d8e6;
+  --surface-400: #a7bed1;
+  --surface-500: #81a1bb;
+  --surface-600: #62829e;
+  --surface-700: #4f6a83;
+  --surface-800: #42586e;
+  --surface-850: #374a5d;
+  --surface-900: #0d1b2a;
+  --surface-950: #07111d;
 
   /* Font — Playfair Display (display/serif) + Be Vietnam Pro (body) */
   --font-display: 'Playfair Display', Georgia, serif;
@@ -227,4 +227,17 @@ button {
 
 button:disabled {
   cursor: not-allowed;
+}
+
+/* === IPA TEXT === */
+.ipa-text {
+  font-size: 0.8em;
+  color: var(--surface-600);
+  font-weight: 500;
+  margin-left: 0.35rem;
+  letter-spacing: normal;
+}
+
+body.dark .ipa-text {
+  color: var(--surface-300);
 }

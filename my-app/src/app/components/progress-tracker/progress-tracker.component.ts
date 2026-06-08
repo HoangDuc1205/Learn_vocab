@@ -17,6 +17,7 @@ export interface Word {
   term: string;
   definition: string;
   synonym: string;
+  ipa?: string;
   status: WordStatus;
   consecutiveCorrect: number;
   totalCorrect: number;
@@ -49,6 +50,7 @@ export class ProgressTrackerComponent implements OnChanges {
   masteredPct = 0;
   inProgressPct = 0;
   notLearnedPct = 0;
+  overallPct = 0;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -59,10 +61,22 @@ export class ProgressTrackerComponent implements OnChanges {
     this.mastered = this.words.filter(w => w.status === 'mastered').length;
 
     if (this.total > 0) {
+      let currentScore = 0;
+      this.words.forEach(w => {
+        if (w.status === 'mastered') currentScore += 5;
+        else if (w.status === 'synonym_written_passed') currentScore += 4;
+        else if (w.status === 'synonym_mc_passed') currentScore += 3;
+        else if (w.status === 'written_passed') currentScore += 2;
+        else if (w.status === 'familiar') currentScore += 1;
+      });
+      const maxScore = this.total * 5;
+      this.overallPct = Math.round((currentScore / maxScore) * 100);
+
       this.masteredPct = (this.mastered / this.total) * 100;
       this.inProgressPct = (this.inProgress / this.total) * 100;
       this.notLearnedPct = (this.notLearned / this.total) * 100;
     } else {
+      this.overallPct = 0;
       this.masteredPct = 0;
       this.inProgressPct = 0;
       this.notLearnedPct = 0;

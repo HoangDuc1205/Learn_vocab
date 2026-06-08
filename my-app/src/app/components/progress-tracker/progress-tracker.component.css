@@ -25,17 +25,33 @@ body.dark .progress-bar-track { background: var(--surface-800); }
   transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dùng màu solid flat thay gradient — đồng bộ với theme */
-.progress-bar-fill.mastered {
-  background: var(--success-500);
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
-.progress-bar-fill.in-progress {
-  background: var(--amber-500);
+.progress-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--surface-600);
 }
 
-.progress-bar-fill.learning {
-  background: var(--primary-500);
+:host-context(.dark) .progress-title,
+body.dark .progress-title { color: var(--surface-300); }
+
+.progress-percent {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-600);
+}
+
+:host-context(.dark) .progress-percent,
+body.dark .progress-percent { color: var(--primary-400); }
+
+.progress-bar-fill.overall {
+  background: linear-gradient(90deg, var(--primary-500), var(--success-500));
 }
 
 /* === STATS GRID === */

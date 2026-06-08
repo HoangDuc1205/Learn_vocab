@@ -73,8 +73,8 @@
             Test {{ selectedTestNum() }} · {{ activeChunkLabel() }} · {{ activeBatchPhaseText() }}
           </div>
           <p class="start-desc">
-            Mỗi test <strong>50 từ</strong>, cụm <strong>10 từ</strong> qua <strong>5 vòng</strong>: định nghĩa (TN + TL) →
-            synonym riêng (TN + TL) → nhập từ gốc từ định nghĩa.
+            Mỗi test <strong>có 50 từ</strong>, học mỗi lần <strong>10 từ</strong> qua <strong>5 vòng</strong>: định nghĩa (Trắc nghiệm + Tự luận) →
+            synonym riêng (Trắc nghiệm + Tự luận) → nhập từ gốc từ định nghĩa.
           </p>
 
           <div class="test-picker-section">
@@ -102,19 +102,19 @@
           <div class="how-grid how-grid-5">
             <div class="how-card">
               <p class="how-card-title">Vòng 1</p>
-              <p class="how-card-desc">TN định nghĩa</p>
+              <p class="how-card-desc">Trắc nghiệm định nghĩa</p>
             </div>
             <div class="how-card">
               <p class="how-card-title">Vòng 2</p>
-              <p class="how-card-desc">TL định nghĩa</p>
+              <p class="how-card-desc">Tự luận định nghĩa</p>
             </div>
             <div class="how-card">
               <p class="how-card-title">Vòng 3</p>
-              <p class="how-card-desc">TN synonym</p>
+              <p class="how-card-desc">Trắc nghiệm synonym</p>
             </div>
             <div class="how-card">
               <p class="how-card-title">Vòng 4</p>
-              <p class="how-card-desc">TL synonym</p>
+              <p class="how-card-desc">Tự luận synonym</p>
             </div>
             <div class="how-card">
               <p class="how-card-title">Vòng 5</p>
@@ -122,15 +122,41 @@
             </div>
           </div>
 
-          <button
-            (click)="startSession()"
-            class="btn-primary btn-lg"
-            id="btn-start-learning"
-            [disabled]="isSelectedTestComplete()"
-          >
-            <lucide-icon name="zap" [size]="20"></lucide-icon>
-            {{ isSelectedTestComplete() ? 'Test đã hoàn thành' : 'Start Learning - Test ' + selectedTestNum() }}
-          </button>
+          <div *ngIf="!isSelectedTestComplete(); else completedActions">
+            <button
+              (click)="startSession()"
+              class="btn-primary btn-lg start-main-btn"
+              id="btn-start-learning"
+            >
+              <lucide-icon name="zap" [size]="20"></lucide-icon>
+              <span>Start Learning - Test {{ selectedTestNum() }}</span>
+            </button>
+          </div>
+          <ng-template #completedActions>
+            <div class="completed-actions-container">
+              <button
+                (click)="startReviewSession()"
+                class="btn-primary btn-lg start-main-btn"
+                id="btn-review-test"
+              >
+                <lucide-icon name="refresh-cw" [size]="20"></lucide-icon>
+                <span>Review Test {{ selectedTestNum() }}</span>
+              </button>
+              <div style="margin-top: 0.75rem;">
+                <button
+                  (click)="handleRelearn()"
+                  class="btn-ghost start-relearn-btn"
+                  id="btn-relearn-test"
+                >
+                  <lucide-icon name="rotate-ccw" [size]="16"></lucide-icon>
+                  <span>Học lại từ đầu</span>
+                </button>
+              </div>
+            </div>
+          </ng-template>
+          <p *ngIf="isSelectedTestComplete()" class="review-hint">
+            Test này đã hoàn thành, bạn có thể ôn lại bất cứ lúc nào.
+          </p>
         </div>
       </div>
     </div>
@@ -175,7 +201,7 @@
 
         <app-multiple-choice
           *ngIf="questionType() === 'mc'"
-          [question]="currentWord()!.term"
+          [question]="formatTermWithIpa(currentWord())"
           [choices]="choices()"
           [correctAnswer]="currentWord()!.definition"
           badgeLabel="Trắc nghiệm định nghĩa"
@@ -185,7 +211,7 @@
 
         <app-written-input
           *ngIf="questionType() === 'written'"
-          [question]="currentWord()!.term"
+          [question]="formatTermWithIpa(currentWord())"
           [correctAnswer]="currentWord()!.definition"
           badgeLabel="Tự luận định nghĩa"
           placeholder="Gõ định nghĩa..."
@@ -195,7 +221,7 @@
 
         <app-multiple-choice
           *ngIf="questionType() === 'synonym_mc'"
-          [question]="currentWord()!.term"
+          [question]="formatTermWithIpa(currentWord())"
           [choices]="synonymChoices()"
           [correctAnswer]="currentWord()!.synonym"
           badgeLabel="Trắc nghiệm synonym"
@@ -205,7 +231,7 @@
 
         <app-written-input
           *ngIf="questionType() === 'synonym_written'"
-          [question]="currentWord()!.term"
+          [question]="formatTermWithIpa(currentWord())"
           [correctAnswer]="currentWord()!.synonym"
           badgeLabel="Tự luận synonym"
           placeholder="Gõ synonym..."
@@ -256,6 +282,25 @@
         (restart)="handleRestart()"
       ></app-completion-screen>
     </div>
+
+    <!-- ─── REVIEW COMPLETE ─── -->
+    <div *ngIf="view() === 'review_complete'" class="glass-card glass-card-lg animate-fade-in-up" style="text-align: center;">
+      <div class="start-icon-wrap" style="background: var(--success-500); margin-bottom: 1.5rem;">
+        <lucide-icon name="check-circle-2" [size]="36"></lucide-icon>
+      </div>
+      <h2 class="mc-question" style="margin-bottom: 0.5rem; font-size: 1.5rem; font-family: var(--font-display);">
+        Review Hoàn Tất!
+      </h2>
+      <p style="color: var(--surface-500); margin-bottom: 2rem;">
+        Bạn đã ôn tập xong các từ trong bài test này.
+      </p>
+      <div class="modal-actions" style="justify-content: center;">
+        <button (click)="goHome()" class="btn-ghost">
+          <lucide-icon name="home" [size]="18"></lucide-icon>
+          Về trang chủ
+        </button>
+      </div>
+    </div>
   </main>
 
   <app-import-modal
@@ -268,6 +313,6 @@
   ></app-import-modal>
 
   <footer class="app-footer">
-    Built with Angular &amp; Lucide Icons
+    © 2026 QuizLearn · Designed & developed by Nguyen Hoang Duc
   </footer>
 </div>

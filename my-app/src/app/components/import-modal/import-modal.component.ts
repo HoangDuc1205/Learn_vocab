@@ -9,6 +9,7 @@ interface ParsedEntry {
   term: string;
   definition: string;
   synonym?: string;
+  ipa?: string;
 }
 
 @Component({
@@ -151,7 +152,7 @@ export class ImportModalComponent {
           return;
         }
         const valid = data.filter(
-          (item: { term?: string; definition?: string; synonym?: string }) =>
+          (item: { term?: string; definition?: string; synonym?: string; ipa?: string }) =>
             item.term && item.definition
         );
         if (valid.length === 0) {

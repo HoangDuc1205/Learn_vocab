@@ -32,7 +32,7 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-type VocabInput = { term: string; definition: string; synonym?: string };
+type VocabInput = { term: string; definition: string; synonym?: string; ipa?: string };
 type BatchPhase = TestPhase;
 type QuestionType = 'mc' | 'written' | 'synonym_mc' | 'synonym_written' | 'vocab';
 
@@ -42,6 +42,7 @@ function initWords(vocab: VocabInput[]): Word[] {
     term: v.term,
     definition: v.definition,
     synonym: v.synonym?.trim() ?? '',
+    ipa: v.ipa?.trim(),
     status: 'not_learned' as const,
     consecutiveCorrect: 0,
     totalCorrect: 0,
@@ -66,7 +67,8 @@ export class App implements OnInit {
   dark = signal<boolean>(false);
   queue = signal<number[]>([]);
   currentIdx = signal<number>(0);
-  view = signal<'start' | 'learn' | 'phase_transition' | 'session_complete' | 'all_complete'>('start');
+  view = signal<'start' | 'learn' | 'phase_transition' | 'session_complete' | 'all_complete' | 'review_complete'>('start');
+  isReviewMode = signal<boolean>(false);
   sessionWords = signal<Word[]>([]);
   transitionWords = signal<Word[]>([]);
   transitionPhase = signal<TransitionPhase>('mc_to_written');
@@ -155,6 +157,17 @@ export class App implements OnInit {
     return this.words().find(w => w.id === q[idx]) || null;
   });
 
+  formatTermWithIpa(word: Word | null): string {
+    if (!word) return '';
+    if (word.ipa) {
+      let rawIpa = word.ipa.trim();
+      if (rawIpa.startsWith('/')) rawIpa = rawIpa.slice(1);
+      if (rawIpa.endsWith('/')) rawIpa = rawIpa.slice(0, -1);
+      return `${word.term} <span class="ipa-text">/${rawIpa}/</span>`;
+    }
+    return word.term;
+  }
+
   choices = computed(() => {
     const word = this.currentWord();
     if (!word) return [];
@@ -182,6 +195,7 @@ export class App implements OnInit {
   });
 
   questionType = computed((): QuestionType => {
+    if (this.isReviewMode()) return 'vocab';
     const word = this.currentWord();
     if (!word) return 'mc';
     switch (word.status) {
@@ -288,6 +302,7 @@ export class App implements OnInit {
   }
 
   startSession() {
+    this.isReviewMode.set(false);
     const testWords = this.activeBatch();
     const chunk = this.activeChunk();
 
@@ -339,6 +354,28 @@ export class App implements OnInit {
     this.totalAnswered.update(a => a + 1);
     if (ans.isCorrect) {
       this.totalCorrect.update(c => c + 1);
+    }
+
+    if (this.isReviewMode()) {
+      if (!ans.isCorrect) {
+        this.queue.update(prev => {
+          const nextQueue = [...prev];
+          const insertAt = Math.min(this.currentIdx() + 3, nextQueue.length);
+          nextQueue.splice(insertAt, 0, word.id);
+          return nextQueue;
+        });
+      }
+
+      const q = this.queue();
+      const nextIdx = this.currentIdx() + 1;
+      if (nextIdx < q.length) {
+        this.currentIdx.set(nextIdx);
+        this.questionKey.update(k => k + 1);
+      } else {
+        this.view.set('review_complete');
+      }
+      this.cdr.detectChanges();
+      return;
     }
 
     const qType = this.questionType();
@@ -468,6 +505,7 @@ export class App implements OnInit {
   handleImport(vocab: VocabInput[]) {
     const newWords = initWords(vocab);
     this.words.set(newWords);
+    this.isReviewMode.set(false);
     this.selectedTestIndex.set(0);
     this.queue.set([]);
     this.currentIdx.set(0);
@@ -486,6 +524,7 @@ export class App implements OnInit {
       totalCorrect: 0,
       totalWrong: 0
     })));
+    this.isReviewMode.set(false);
     this.queue.set([]);
     this.currentIdx.set(0);
     this.view.set('start');
@@ -515,6 +554,7 @@ export class App implements OnInit {
     const source = getBundledVocabulary();
     const merged = syncWordsWithSource(this.words(), source);
     this.words.set(merged);
+    this.isReviewMode.set(false);
     this.selectedTestIndex.set(clampTestIndex(this.selectedTestIndex(), merged.length));
     this.queue.set([]);
     this.currentIdx.set(0);
@@ -535,6 +575,7 @@ export class App implements OnInit {
   readonly bundledVocabCount = getBundledVocabulary().length;
 
   goHome() {
+    this.isReviewMode.set(false);
     this.queue.set([]);
     this.currentIdx.set(0);
     this.sessionWords.set([]);
@@ -550,5 +591,62 @@ export class App implements OnInit {
   closeImport() {
     this.showImportModal.set(false);
     this.cdr.detectChanges();
+  }
+
+  startReviewSession() {
+    const testWords = this.activeBatch();
+    if (testWords.length === 0) return;
+
+    this.isReviewMode.set(true);
+    this.sessionRound.set('vocab');
+    this.queue.set(shuffle(testWords.map(w => w.id)));
+    this.currentIdx.set(0);
+    this.sessionWords.set(testWords);
+    this.view.set('learn');
+    this.questionKey.update(k => k + 1);
+
+    const testNum = this.selectedTestNum();
+    const totalInQueue = testWords.length;
+    this.roundText.set(
+      `Test ${testNum} · Review Session (${totalInQueue} từ)`
+    );
+    this.cdr.detectChanges();
+  }
+
+  relearnSelectedTest() {
+    const testWords = this.activeBatch();
+    if (testWords.length === 0) return;
+    const testWordIds = new Set(testWords.map(w => w.id));
+
+    this.words.update(prev => prev.map(w => {
+      if (testWordIds.has(w.id)) {
+        return {
+          ...w,
+          status: 'not_learned',
+          consecutiveCorrect: 0,
+          totalCorrect: 0,
+          totalWrong: 0
+        };
+      }
+      return w;
+    }));
+
+    this.startSession();
+  }
+
+  handleRelearn() {
+    const testNum = this.selectedTestNum();
+    const confirmMessage = `Bạn có chắc muốn học lại Test ${testNum} từ đầu? Tiến độ của test này sẽ được đặt lại.`;
+    if (confirm(confirmMessage)) {
+      this.relearnSelectedTest();
+    }
+  }
+
+  handleMainAction() {
+    if (this.isSelectedTestComplete()) {
+      this.startReviewSession();
+    } else {
+      this.startSession();
+    }
   }
 }

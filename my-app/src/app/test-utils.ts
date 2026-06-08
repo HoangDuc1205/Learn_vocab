@@ -1,5 +1,14 @@
 import { hasSynonym, Word, WordStatus } from './components/progress-tracker/progress-tracker.component';
 
+export function getWordScore(w: Word): number {
+  if (w.status === 'mastered') return 5;
+  if (w.status === 'synonym_written_passed') return 4;
+  if (w.status === 'synonym_mc_passed') return 3;
+  if (w.status === 'written_passed') return 2;
+  if (w.status === 'familiar') return 1;
+  return 0;
+}
+
 export const TEST_SIZE = 50;
 /** Mỗi cụm trong test: ~10 từ × các vòng rồi sang cụm tiếp. */
 export const CHUNK_SIZE = 10;
@@ -69,13 +78,16 @@ export function buildTestSummaries(allWords: Word[]): TestSummary[] {
     const total = testWords.length;
     const phase = getTestPhase(testWords);
 
+    const totalScore = testWords.reduce((sum, w) => sum + getWordScore(w), 0);
+    const maxScore = total * 5;
+
     return {
       index,
       number: index + 1,
       words: testWords,
       total,
       mastered,
-      progressPct: total > 0 ? Math.round((mastered / total) * 100) : 0,
+      progressPct: maxScore > 0 ? Math.round((totalScore / maxScore) * 100) : 0,
       isComplete: phase === 'complete',
       phase,
       phaseLabel: getTestPhaseLabel(phase)

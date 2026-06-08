@@ -32,7 +32,7 @@ export interface ResolvedAppState {
   syncedFromFile: boolean;
 }
 
-type VocabEntry = { term: string; definition: string; synonym?: string };
+type VocabEntry = { term: string; definition: string; synonym?: string; ipa?: string };
 
 /** Shape of a word entry saved by storage version 1 */
 interface V1StoredWord {
@@ -52,7 +52,7 @@ export function getBundledVocabulary(): VocabEntry[] {
 /** Fingerprint of bundled vocabulary.json — when it changes, we re-sync on load. */
 export function computeVocabFingerprint(vocab: VocabEntry[]): string {
   return vocab
-    .map(v => `${v.term.trim().toLowerCase()}\t${v.definition.trim()}\t${(v.synonym ?? '').trim().toLowerCase()}`)
+    .map(v => `${v.term.trim().toLowerCase()}\t${v.definition.trim()}\t${(v.synonym ?? '').trim().toLowerCase()}\t${(v.ipa ?? '').trim().toLowerCase()}`)
     .join('\n');
 }
 
@@ -64,6 +64,7 @@ export function wordsFromSource(vocab: VocabEntry[]): Word[] {
     term: v.term,
     definition: v.definition,
     synonym: v.synonym?.trim() ?? '',
+    ipa: v.ipa?.trim(),
     status: 'not_learned' as const,
     consecutiveCorrect: 0,
     totalCorrect: 0,
@@ -85,7 +86,8 @@ export function syncWordsWithSource(saved: Word[], source: VocabEntry[]): Word[]
         id: i,
         term: entry.term,
         definition: entry.definition,
-        synonym: entry.synonym?.trim() ?? prev.synonym ?? ''
+        synonym: entry.synonym?.trim() ?? prev.synonym ?? '',
+        ipa: entry.ipa?.trim() ?? prev.ipa
       };
     }
 
@@ -94,6 +96,7 @@ export function syncWordsWithSource(saved: Word[], source: VocabEntry[]): Word[]
       term: entry.term,
       definition: entry.definition,
       synonym: entry.synonym?.trim() ?? '',
+      ipa: entry.ipa?.trim(),
       status: 'not_learned' as const,
       consecutiveCorrect: 0,
       totalCorrect: 0,
@@ -118,6 +121,7 @@ function isWord(value: unknown): value is Word {
     typeof w.term === 'string' &&
     typeof w.definition === 'string' &&
     typeof w.synonym === 'string' &&
+    (typeof w.ipa === 'string' || typeof w.ipa === 'undefined') &&
     VALID_STATUSES.includes(w.status) &&
     typeof w.consecutiveCorrect === 'number' &&
     typeof w.totalCorrect === 'number' &&
@@ -157,6 +161,7 @@ function migrateV1Word(raw: V1StoredWord): Word {
     term,
     definition: raw.definition,
     synonym: lookupSynonym(term),
+    ipa: defaultByTerm.get(term.toLowerCase())?.ipa?.trim(),
     status: migratedStatus,
     consecutiveCorrect: raw.consecutiveCorrect || 0,
     totalCorrect: raw.totalCorrect || 0,
