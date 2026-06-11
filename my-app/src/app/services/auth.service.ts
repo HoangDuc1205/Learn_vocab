@@ -20,7 +20,7 @@ export interface AuthResponse {
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5000/api/auth';
+  private apiUrl = 'https://learn-vocab-spt5.onrender.com/api/auth';
   private TOKEN_KEY = 'quizlearn-token';
   private USER_KEY = 'quizlearn-user';
 

@@ -17,7 +17,7 @@ export interface SyncPayload {
 export class SyncService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  private apiUrl = 'http://localhost:5000/api/vocabulary';
+  private apiUrl = 'https://learn-vocab-spt5.onrender.com/api/vocabulary';
 
   private getHeaders(): HttpHeaders {
     const token = this.authService.getToken();
