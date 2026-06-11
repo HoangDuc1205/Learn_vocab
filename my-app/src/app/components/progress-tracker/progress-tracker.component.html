@@ -1,12 +1,12 @@
 <div>
   <div class="progress-header">
     <span class="progress-title">Mức độ hoàn thành</span>
-    <span class="progress-percent">{{ overallPct }}%</span>
+    <span class="progress-percent">{{ stats().overallPct }}%</span>
   </div>
   <div class="progress-bar-track">
     <div
       class="progress-bar-fill overall"
-      [style.width.%]="overallPct"
+      [style.width.%]="stats().overallPct"
     ></div>
   </div>
 
@@ -16,7 +16,7 @@
         <lucide-icon name="trophy" [size]="18"></lucide-icon>
       </div>
       <div>
-        <p class="stat-value success">{{ mastered }}</p>
+        <p class="stat-value success">{{ stats().mastered }}</p>
         <p class="stat-label">Mastered</p>
       </div>
     </div>
@@ -26,7 +26,7 @@
         <lucide-icon name="star" [size]="18"></lucide-icon>
       </div>
       <div>
-        <p class="stat-value amber">{{ inProgress }}</p>
+        <p class="stat-value amber">{{ stats().inProgress }}</p>
         <p class="stat-label">Đang học</p>
       </div>
     </div>
@@ -36,7 +36,7 @@
         <lucide-icon name="book-open" [size]="18"></lucide-icon>
       </div>
       <div>
-        <p class="stat-value primary">{{ notLearned }}</p>
+        <p class="stat-value primary">{{ stats().notLearned }}</p>
         <p class="stat-label">Chưa học</p>
       </div>
     </div>

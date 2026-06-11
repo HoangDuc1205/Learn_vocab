@@ -95,6 +95,9 @@ export class App implements OnInit {
   authError = signal<string | null>(null);
   isSyncing = signal<boolean>(false);
 
+  private syncDebounceTimer: ReturnType<typeof setTimeout> | null = null;
+  private readonly SYNC_DEBOUNCE_MS = 800;
+
   tests = computed(() => buildTestSummaries(this.words()));
 
   selectedTest = computed((): TestSummary | null => {
@@ -192,6 +195,27 @@ export class App implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  scheduleSyncWithBackend() {
+    if (!this.authService.currentUser()) return;
+
+    if (this.syncDebounceTimer) {
+      clearTimeout(this.syncDebounceTimer);
+    }
+
+    this.syncDebounceTimer = setTimeout(() => {
+      this.syncDebounceTimer = null;
+      this.syncWithBackend();
+    }, this.SYNC_DEBOUNCE_MS);
+  }
+
+  flushSyncWithBackend() {
+    if (this.syncDebounceTimer) {
+      clearTimeout(this.syncDebounceTimer);
+      this.syncDebounceTimer = null;
+    }
+    this.syncWithBackend();
   }
 
   syncWithBackend() {
@@ -589,6 +613,8 @@ export class App implements OnInit {
       });
     });
 
+    this.scheduleSyncWithBackend();
+
     // If incorrect, recycle this item inside active queue
     if (!ans.isCorrect) {
       this.queue.update(prev => {
@@ -607,8 +633,8 @@ export class App implements OnInit {
       this.currentIdx.set(nextIdx);
       this.questionKey.update(k => k + 1);
     } else {
-      // Session finished, sync with backend
-      this.syncWithBackend();
+      // Session finished — flush pending sync immediately
+      this.flushSyncWithBackend();
 
       const testWords = this.activeBatch();
       const chunk = this.activeChunk();
@@ -741,6 +767,7 @@ export class App implements OnInit {
   readonly bundledVocabCount = getBundledVocabulary().length;
 
   goHome() {
+    this.flushSyncWithBackend();
     this.isReviewMode.set(false);
     this.queue.set([]);
     this.currentIdx.set(0);
