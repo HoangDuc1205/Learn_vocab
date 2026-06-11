@@ -115,9 +115,16 @@
         </button>
 
         <!-- ─── AUTH CONTROLS ─── -->
-        <div class="sync-indicator" [class.syncing]="isSyncing()" title="Đồng bộ đám mây">
+        <button
+          (click)="loadBackendProgress()"
+          class="sync-indicator"
+          [class.syncing]="isSyncing()"
+          title="Đồng bộ đám mây (Click để tải tiến độ mới nhất)"
+          style="border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0;"
+          type="button"
+        >
           <lucide-icon [name]="isSyncing() ? 'refresh-cw' : 'cloud'" [size]="15"></lucide-icon>
-        </div>
+        </button>
         <div class="user-profile btn-ghost" id="btn-user-profile">
           <lucide-icon name="user" [size]="15"></lucide-icon>
           <span class="btn-text-hide-mobile">{{ authService.currentUser()!.username }}</span>

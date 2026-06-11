@@ -22,7 +22,7 @@ export class MultipleChoiceComponent implements OnChanges {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['question']) {
+    if (changes['question'] || changes['choices'] || changes['correctAnswer']) {
       this.selected = null;
       this.showResult = false;
       this.cdr.detectChanges();
