@@ -1,4 +1,86 @@
-<div class="app-container">
+<!-- ─── LOGIN / REGISTER SCREEN ─── -->
+<div *ngIf="!authService.currentUser()" class="login-page">
+  <div class="login-bg-pattern"></div>
+
+  <div class="login-container animate-fade-in-up">
+    <!-- Logo -->
+    <div class="login-logo-section">
+      <div class="login-logo">
+        <lucide-icon name="brain" [size]="32"></lucide-icon>
+      </div>
+      <h1 class="login-app-name">QuizLearn</h1>
+      <p class="login-tagline">Học từ vựng thông minh · Ghi nhớ lâu hơn</p>
+    </div>
+
+    <!-- Card -->
+    <div class="login-card glass-card">
+      <h2 class="login-title">
+        {{ authMode() === 'login' ? 'Đăng nhập' : 'Đăng ký tài khoản' }}
+      </h2>
+      <p class="login-subtitle">
+        {{ authMode() === 'login' ? 'Đăng nhập để bắt đầu học và đồng bộ tiến độ.' : 'Tạo tài khoản mới để lưu trữ tiến độ học tập.' }}
+      </p>
+
+      <!-- Error -->
+      <div *ngIf="authError()" class="auth-error-box animate-fade-in-up">
+        <lucide-icon name="alert-circle" [size]="16"></lucide-icon>
+        <span>{{ authError() }}</span>
+      </div>
+
+      <!-- Form -->
+      <form (submit)="authMode() === 'login' ? handleLogin() : handleRegister(); $event.preventDefault()" class="auth-form">
+        <div class="form-group">
+          <label for="auth-username" class="form-label">Tên tài khoản</label>
+          <input
+            type="text"
+            id="auth-username"
+            name="username"
+            class="form-input"
+            placeholder="Nhập tên tài khoản..."
+            [(ngModel)]="authUsername"
+            required
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label for="auth-password" class="form-label">Mật khẩu</label>
+          <input
+            type="password"
+            id="auth-password"
+            name="password"
+            class="form-input"
+            placeholder="Nhập mật khẩu..."
+            [(ngModel)]="authPassword"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button type="submit" class="btn-primary auth-submit-btn" style="margin-top: 1.5rem; width: 100%;">
+          <lucide-icon [name]="authMode() === 'login' ? 'user' : 'user-plus'" [size]="16"></lucide-icon>
+          <span>{{ authMode() === 'login' ? 'Đăng nhập' : 'Đăng ký' }}</span>
+        </button>
+      </form>
+
+      <div class="auth-switch-text" style="margin-top: 1.25rem; text-align: center;">
+        <span *ngIf="authMode() === 'login'">Chưa có tài khoản? </span>
+        <span *ngIf="authMode() === 'register'">Đã có tài khoản? </span>
+        <button type="button" class="btn-link" (click)="toggleAuthMode()">
+          {{ authMode() === 'login' ? 'Đăng ký ngay' : 'Đăng nhập ngay' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Theme Toggle on Login page -->
+    <button (click)="toggleTheme()" class="login-theme-toggle" title="Đổi giao diện">
+      <lucide-icon [name]="dark() ? 'sun' : 'moon'" [size]="18"></lucide-icon>
+    </button>
+  </div>
+</div>
+
+<!-- ─── MAIN APP (after login) ─── -->
+<div class="app-container" *ngIf="authService.currentUser()">
   <!-- ─── HEADER ─── -->
   <header class="app-header">
     <div class="header-inner">
@@ -31,6 +113,24 @@
           <lucide-icon name="settings" [size]="15"></lucide-icon>
           <span class="btn-text-hide-mobile">Manage Set</span>
         </button>
+
+        <!-- ─── AUTH CONTROLS ─── -->
+        <div class="sync-indicator" [class.syncing]="isSyncing()" title="Đồng bộ đám mây">
+          <lucide-icon [name]="isSyncing() ? 'refresh-cw' : 'cloud'" [size]="15"></lucide-icon>
+        </div>
+        <div class="user-profile btn-ghost" id="btn-user-profile">
+          <lucide-icon name="user" [size]="15"></lucide-icon>
+          <span class="btn-text-hide-mobile">{{ authService.currentUser()!.username }}</span>
+        </div>
+        <button
+          (click)="handleLogout()"
+          class="btn-ghost text-danger"
+          id="btn-logout"
+          title="Đăng xuất"
+        >
+          <lucide-icon name="log-out" [size]="15"></lucide-icon>
+        </button>
+
         <button
           (click)="toggleTheme()"
           class="btn-icon"

@@ -22,6 +22,8 @@ import {
   TestPhase,
   TestSummary
 } from './test-utils';
+import { AuthService } from './services/auth.service';
+import { SyncService } from './services/sync.service';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -85,6 +87,14 @@ export class App implements OnInit {
       : null
   );
 
+  // Auth / Sync Signals and variables
+  showAuthModal = signal<'login' | 'register' | null>(null);
+  authMode = signal<'login' | 'register'>('login');
+  authUsername = '';
+  authPassword = '';
+  authError = signal<string | null>(null);
+  isSyncing = signal<boolean>(false);
+
   tests = computed(() => buildTestSummaries(this.words()));
 
   selectedTest = computed((): TestSummary | null => {
@@ -116,7 +126,11 @@ export class App implements OnInit {
 
   isActiveChunkComplete = computed(() => isChunkComplete(this.activeChunk()));
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    public authService: AuthService,
+    private syncService: SyncService
+  ) {
     // Check local preferences for theme
     if (typeof window !== 'undefined') {
       const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -146,7 +160,152 @@ export class App implements OnInit {
     this.selectedTestIndex.set(
       clampTestIndex(this.selectedTestIndex(), this.words().length)
     );
+
+    // If already logged in, fetch database progress
+    if (this.authService.currentUser()) {
+      this.loadBackendProgress();
+    }
+
     this.cdr.detectChanges();
+  }
+
+  loadBackendProgress() {
+    this.isSyncing.set(true);
+    this.syncService.fetchProgress().subscribe({
+      next: (data) => {
+        this.isSyncing.set(false);
+        if (data.words && data.words.length > 0) {
+          this.words.set(data.words);
+          this.totalAnswered.set(data.totalAnswered);
+          this.totalCorrect.set(data.totalCorrect);
+          this.selectedTestIndex.set(clampTestIndex(data.selectedTestIndex, data.words.length));
+          this.vocabSyncNotice.set("Đã tải tiến trình học từ tài khoản của bạn.");
+        } else {
+          // Fresh user with no words in DB, sync local to cloud
+          this.syncWithBackend();
+        }
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error("Lỗi tải tiến trình từ server:", err);
+        this.isSyncing.set(false);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  syncWithBackend() {
+    if (!this.authService.currentUser()) return;
+
+    this.isSyncing.set(true);
+    const payload = {
+      totalAnswered: this.totalAnswered(),
+      totalCorrect: this.totalCorrect(),
+      selectedTestIndex: this.selectedTestIndex(),
+      words: this.words()
+    };
+
+    this.syncService.syncProgress(payload).subscribe({
+      next: () => {
+        this.isSyncing.set(false);
+        this.authService.updateLocalUserStats(payload.totalAnswered, payload.totalCorrect, payload.selectedTestIndex);
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error("Lỗi đồng bộ:", err);
+        this.isSyncing.set(false);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  openLoginModal() {
+    this.authUsername = '';
+    this.authPassword = '';
+    this.authError.set(null);
+    this.showAuthModal.set('login');
+    this.cdr.detectChanges();
+  }
+
+  openRegisterModal() {
+    this.authUsername = '';
+    this.authPassword = '';
+    this.authError.set(null);
+    this.showAuthModal.set('register');
+    this.cdr.detectChanges();
+  }
+
+  closeAuthModal() {
+    this.showAuthModal.set(null);
+    this.cdr.detectChanges();
+  }
+
+  toggleAuthMode() {
+    this.authMode.set(this.authMode() === 'login' ? 'register' : 'login');
+    this.authUsername = '';
+    this.authPassword = '';
+    this.authError.set(null);
+    this.cdr.detectChanges();
+  }
+
+  handleLogin() {
+    if (!this.authUsername || !this.authPassword) {
+      this.authError.set("Vui lòng nhập đầy đủ tài khoản và mật khẩu");
+      return;
+    }
+
+    this.authService.login(this.authUsername, this.authPassword).subscribe({
+      next: () => {
+        this.closeAuthModal();
+        this.authUsername = '';
+        this.authPassword = '';
+        this.loadBackendProgress();
+      },
+      error: (err) => {
+        const msg = err.error?.message || "Đăng nhập thất bại. Vui lòng thử lại.";
+        this.authError.set(msg);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  handleRegister() {
+    if (!this.authUsername || !this.authPassword) {
+      this.authError.set("Vui lòng nhập đầy đủ tài khoản và mật khẩu");
+      return;
+    }
+
+    if (this.authPassword.length < 6) {
+      this.authError.set("Mật khẩu phải dài ít nhất 6 ký tự");
+      return;
+    }
+
+    this.authService.register(this.authUsername, this.authPassword).subscribe({
+      next: () => {
+        this.closeAuthModal();
+        this.authUsername = '';
+        this.authPassword = '';
+        this.syncWithBackend();
+      },
+      error: (err) => {
+        const msg = err.error?.message || "Đăng ký thất bại. Vui lòng thử lại.";
+        this.authError.set(msg);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  handleLogout() {
+    if (confirm("Bạn có chắc muốn đăng xuất? Tiến trình của bạn vẫn sẽ được lưu trữ an toàn trên máy chủ.")) {
+      this.authService.logout();
+      const localState = resolveInitialAppState();
+      this.words.set(localState.words);
+      this.totalAnswered.set(localState.totalAnswered);
+      this.totalCorrect.set(localState.totalCorrect);
+      this.selectedTestIndex.set(localState.selectedTestIndex);
+      this.vocabSyncNotice.set("Đã đăng xuất. Ứng dụng quay về chế độ lưu trữ offline.");
+      this.cdr.detectChanges();
+    }
   }
 
   // Computed properties
@@ -298,6 +457,7 @@ export class App implements OnInit {
 
   selectTest(index: number) {
     this.selectedTestIndex.set(clampTestIndex(index, this.words().length));
+    this.syncWithBackend();
     this.cdr.detectChanges();
   }
 
@@ -447,6 +607,9 @@ export class App implements OnInit {
       this.currentIdx.set(nextIdx);
       this.questionKey.update(k => k + 1);
     } else {
+      // Session finished, sync with backend
+      this.syncWithBackend();
+
       const testWords = this.activeBatch();
       const chunk = this.activeChunk();
       const testComplete = testWords.length > 0 && testWords.every(w => w.status === 'mastered');
@@ -513,6 +676,7 @@ export class App implements OnInit {
     this.totalAnswered.set(0);
     this.totalCorrect.set(0);
     this.sessionWords.set([]);
+    this.syncWithBackend();
     this.cdr.detectChanges();
   }
 
@@ -531,6 +695,7 @@ export class App implements OnInit {
     this.totalAnswered.set(0);
     this.totalCorrect.set(0);
     this.sessionWords.set([]);
+    this.syncWithBackend();
     this.cdr.detectChanges();
   }
 
@@ -564,6 +729,7 @@ export class App implements OnInit {
       `Đã đồng bộ ${merged.length} từ từ vocabulary.json (giữ tiến độ các từ trùng tên).`
     );
     this.closeImport();
+    this.syncWithBackend();
     this.cdr.detectChanges();
   }
 
@@ -631,6 +797,7 @@ export class App implements OnInit {
       return w;
     }));
 
+    this.syncWithBackend();
     this.startSession();
   }
 

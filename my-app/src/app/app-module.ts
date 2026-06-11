@@ -1,6 +1,7 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 
@@ -38,7 +39,11 @@ import {
   CornerDownLeft,
   Pencil,
   Star,
-  Home
+  Home,
+  User,
+  LogOut,
+  UserPlus,
+  Cloud
 } from 'lucide-angular';
 
 @NgModule({
@@ -79,11 +84,16 @@ import {
       CornerDownLeft,
       Pencil,
       Star,
-      Home
+      Home,
+      User,
+      LogOut,
+      UserPlus,
+      Cloud
     })
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })
