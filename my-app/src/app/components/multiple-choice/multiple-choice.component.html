@@ -12,11 +12,12 @@
   <!-- Choices -->
   <div class="mc-choices">
     <button
-      *ngFor="let choice of choices; let idx = index"
-      (click)="handleSelect(choice)"
+      *ngFor="let choice of choices; let idx = index; trackBy: trackChoice"
+      type="button"
+      (click)="handleSelect(choice, $event)"
       [disabled]="showResult"
       [class]="getButtonClass(choice)"
-      [id]="'choice-' + idx"
+      [id]="'choice-' + questionKey + '-' + idx"
     >
       <span class="choice-label">
         {{ labels[idx] }}
@@ -28,7 +29,7 @@
   <!-- Don't Know button -->
   <button
     *ngIf="!showResult"
-    (click)="handleDontKnow()"
+    (click)="handleDontKnow($event)"
     class="btn-dont-know"
     id="btn-dont-know"
   >

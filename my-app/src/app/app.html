@@ -308,6 +308,7 @@
 
         <app-multiple-choice
           *ngIf="questionType() === 'mc'"
+          [questionKey]="questionKey()"
           [question]="formatTermWithIpa(currentWord())"
           [choices]="choices()"
           [correctAnswer]="currentWord()!.definition"
@@ -328,6 +329,7 @@
 
         <app-multiple-choice
           *ngIf="questionType() === 'synonym_mc'"
+          [questionKey]="questionKey()"
           [question]="formatTermWithIpa(currentWord())"
           [choices]="synonymChoices()"
           [correctAnswer]="currentWord()!.synonym"

@@ -70,6 +70,16 @@ body.dark .mc-question { color: var(--surface-50); }
   display: flex;
   align-items: center;
   letter-spacing: -0.01em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choice-btn:focus {
+  outline: none;
+}
+
+.choice-btn:focus-visible {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
 }
 
 :host-context(.dark) .choice-btn,
@@ -79,18 +89,20 @@ body.dark .choice-btn {
   color: var(--surface-200);
 }
 
-.choice-btn:hover:not(:disabled) {
-  border-color: var(--primary-400);
-  background: var(--primary-50);
-  transform: translateX(3px);
-  color: var(--primary-700);
-}
+@media (hover: hover) and (pointer: fine) {
+  .choice-btn:hover:not(:disabled) {
+    border-color: var(--primary-400);
+    background: var(--primary-50);
+    transform: translateX(3px);
+    color: var(--primary-700);
+  }
 
-:host-context(.dark) .choice-btn:hover:not(:disabled),
-body.dark .choice-btn:hover:not(:disabled) {
-  border-color: var(--primary-500);
-  background: rgba(45, 143, 134, 0.1);
-  color: var(--primary-200);
+  :host-context(.dark) .choice-btn:hover:not(:disabled),
+  body.dark .choice-btn:hover:not(:disabled) {
+    border-color: var(--primary-500);
+    background: rgba(45, 143, 134, 0.1);
+    color: var(--primary-200);
+  }
 }
 
 .choice-btn.correct {
